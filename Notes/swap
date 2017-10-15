@@ -1,0 +1,18 @@
+swap?
+main(){
+	int* p=;
+	int* q=;
+	swap(p,q);
+}	
+
+void swap(int* &p, int* &q){
+	int temp = p;
+	p=q;
+	q=temp;
+}
+
+void swap(int *p, int *q){
+	int temp =*p;
+	*p=*q;
+	*q=temp;
+}
