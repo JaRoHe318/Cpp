@@ -14,7 +14,7 @@ public:
 
             ~List();
     //        List(const List<T> &copyThis);
-            List& operator =(const List<T> &RHS);
+//            List& operator =(const List<T> &RHS);
 
     node<T>* InsertHead(T i);           //inset i at the head of list
 

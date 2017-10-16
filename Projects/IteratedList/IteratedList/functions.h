@@ -1,7 +1,6 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-
 using namespace std;
 #include <iostream>
 #include "node.h"
@@ -51,11 +50,8 @@ node<T>* _insertAfter(node<T>* &head, node<T>* afterThis ,const T &insertThis){
 
 template<class T>
 node<T>* _insertRand(node<T>* &head,node<T>* afterThis){
-//    srand(time(0));
     int ran=rand() % 100 + 1;
-    //    _insert_head(head,ran);
-    _insertAfter(head, afterThis, ran);
-
+    return _insertAfter(head, afterThis, ran);
 }
 
 template<class T>
