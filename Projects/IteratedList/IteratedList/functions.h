@@ -1,7 +1,6 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-
 using namespace std;
 #include <iostream>
 #include "node.h"
