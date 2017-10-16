@@ -13,8 +13,13 @@ public:
     List();
 
             ~List();
+<<<<<<< HEAD
             List(const List<T> &copyThis);
             List& operator =(const List<T> &RHS);
+=======
+    //        List(const List<T> &copyThis);
+//            List& operator =(const List<T> &RHS);
+>>>>>>> bffa3538466a792e78f990eb2f63cae2380b673e
 
     node<T>* InsertHead(T i);           //inset i at the head of list
 

@@ -1,7 +1,10 @@
 using namespace std;
 #include <iostream>
 #include <ctime>
+<<<<<<< HEAD
 
+=======
+>>>>>>> bffa3538466a792e78f990eb2f63cae2380b673e
 #include "list.h"
 #include "node.h"
 
@@ -15,12 +18,15 @@ int main(){
     srand(time(0));
 
         TestFun();
-//    TestDelete();
 
     cout <<endl<<endl<< "-------------------------------" << endl;
     return 0;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> bffa3538466a792e78f990eb2f63cae2380b673e
 void Printer(node<int>* marker,List<int> l){
     node<int>* walker = l.Begin();
 
@@ -61,6 +67,7 @@ void TestFun(){
         case 'R':
             marker=l.InsertRandom(marker);
             break;
+<<<<<<< HEAD
         case 'C':
             temp = c.Copy(l);
 
@@ -68,6 +75,16 @@ void TestFun(){
             cout<<c;
             cout<<"\n=================";
             break;
+=======
+//        case 'C':
+//            cout<<"\n\n";
+//            Printer(marker,l);
+
+////            c.Copy(c);
+
+//            cout<<"\n\n";
+//            Printer(marker,c);
+>>>>>>> bffa3538466a792e78f990eb2f63cae2380b673e
         case 'A':
             cout<<": "; cin>>in;
             marker=l.InsertAfter(in, marker);
