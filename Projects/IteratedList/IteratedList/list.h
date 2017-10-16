@@ -23,9 +23,9 @@ public:
 
         //casting operator: true if _ptr not NULL
         //this turned out to be a pain!
-//        operator bool(){
-//            return _ptr==NULL;
-//        }
+        //        operator bool(){
+        //            return _ptr==NULL;
+        //        }
 
 
         //dereference operator
@@ -106,7 +106,7 @@ public:
     Iterator Search(const T &key);
 
 
-    //    Iterator Next(Iterator iMarker);
+        Iterator Next(Iterator iMarker);
 
     Iterator Prev(Iterator iMarker);    //get the previous node to iMarker
 
@@ -193,30 +193,40 @@ void List<T>::Print()const {
     _print_list(cout, head);
 }
 
-template <class T>
-typename List<T>::Iterator List<T>::Search(const T& item){
-    return Iterator(_search_list(head, item));
-}
 
 template <class T>
-T& List<T>::operator[](int index){
-    T inside;
-    return inside;
+typename List<T>::Iterator List<T>::Next(Iterator iMarker){
+    if(iMarker.is_null()){
+        return ++iMarker;
+    }else{
+        return ++iMarker;
+    }
 }
 
-template <class T>
-typename List<T>::Iterator List<T>::Begin() const{
-    return Iterator(head);
-}
-template <class T>
-typename List<T>::Iterator List<T>::End() const{
-    //    return _lastNode(head);
-    return Iterator(_lastNode(head));
-}
+    template <class T>
+    typename List<T>::Iterator List<T>::Search(const T& item){
+        return Iterator(_search_list(head, item));
+    }
 
-template<class U>
-ostream& operator <<(ostream& outs,const List<U>& l){
-    return _print_list(outs, l.head);
-}
+    template <class T>
+    T& List<T>::operator[](int index){
+        T inside;
+        return inside;
+    }
+
+    template <class T>
+    typename List<T>::Iterator List<T>::Begin() const{
+        return Iterator(head);
+    }
+    template <class T>
+    typename List<T>::Iterator List<T>::End() const{
+        //    return _lastNode(head);
+        return Iterator(_lastNode(head));
+    }
+
+    template<class U>
+    ostream& operator <<(ostream& outs,const List<U>& l){
+        return _print_list(outs, l.head);
+    }
 
 #endif // LIST_H

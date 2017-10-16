@@ -69,6 +69,9 @@ void TestFun(){
             cout<<": "; cin>>in;
             marker=l.Search(in);
             break;
+        case 'N':
+            marker=l.Next(marker);
+            break;
         case 'H':
             marker=l.Begin();
             break;
