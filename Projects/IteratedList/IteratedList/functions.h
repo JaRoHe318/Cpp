@@ -3,6 +3,7 @@
 using namespace std;
 #include <iostream>
 #include "node.h"
+#include <assert.h>
 
 template<class U>
 ostream& _print_list(ostream &outs, node<U>* head_ptr){
@@ -50,7 +51,7 @@ node<T>* _insertAfter(node<T>* &head, node<T>* afterThis ,const T &insertThis){
 template<class T>
 node<T>* _insertRand(node<T>* &head,node<T>* afterThis){
     int ran=rand() % 100 + 1;
-    _insertAfter(head, afterThis, ran);
+    return _insertAfter(head, afterThis, ran);
 }
 
 template<class T>

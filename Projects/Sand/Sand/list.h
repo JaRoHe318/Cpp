@@ -4,6 +4,7 @@
 using namespace std;
 #include <iostream>
 #include <assert.h>
+#include "functs.h"
 
 
 template <class T>
@@ -58,8 +59,8 @@ public:
 
 
 private:
-    T* copy_array(T* src, int size);
-    void destroy_array(T* &src);
+//    T* copy_array(T* src, int size);
+//    void destroy_array(T* &src);
 
     T* _a_list;                     //the List raw data
     int _how_many;                  //size of List
@@ -108,26 +109,6 @@ typename List<T>::Iterator List<T>::End() const{
     //probably a terrible idea!
     return Iterator(_a_list+_how_many);
 }
-
-
-
-template <class T>
-void List<T>::destroy_array(T* &src){
-    if (src){
-        delete[] src;
-    }
-    src = NULL;
-}
-
-template <class T>
-T* List<T>::copy_array(T* src, int size){
-    T* copy = new T[size];
-    for (int i=0; i<size; i++){
-        copy[i] = src[i];
-    }
-    return copy;
-}
-
 
 
 

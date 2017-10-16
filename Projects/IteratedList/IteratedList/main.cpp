@@ -6,7 +6,7 @@ using namespace std;
 #include "node.h"
 
 void TestFun();
-void Printer(node<int> *marker, List<int> l);
+void Printer(List<int>::Iterator marker, List<int> l);
 
 
 
@@ -20,22 +20,21 @@ int main(){
     return 0;
 }
 
-void Printer(node<int>* marker,List<int> l){
-    node<int>* walker = l.Begin();
+void Printer(List<int>::Iterator marker,List<int> l){
+    List<int>::Iterator walker = l.Begin();
 
     cout<<"H-> ";
 
-    if(marker==NULL){
-        //cout<<"NULL!";
-    }else{
+    if(walker.is_null()){
 
-        while (walker!=NULL){
+    }else{
+        while (!walker.is_null()){
             if(walker==marker){
                 cout<<"{"<<*walker<<"} ";
-                walker = walker->_next;
+                ++walker;
             }else{
                 cout<<"["<<*walker<<"] ";          //print this node
-                walker = walker->_next; //go to the next node
+               ++ walker;
             }
         }
     }
@@ -46,13 +45,12 @@ void TestFun(){
     char ans='x';
     int in=0;
 
-    node<int>* marker=NULL;
-    node<int>* temp = NULL;
     List<int> l;
+    List<int>::Iterator marker=l.Begin();
 
     Printer(marker,l);
     do{
-        cout<<"\n\n [R]andom [A]fter [B]efore [D]elete [S]earch [P]revious  [N]ext  [H]ome  [E]nd e[X]it\n";
+        cout<<"\n\n [R]andom [A]fter [B]efore [S]earch [P]revious  [N]ext  [H]ome  [E]nd e[X]it\n";
         cout<<": "; cin>>ans;
 
         switch (toupper(ans)) {
@@ -67,22 +65,9 @@ void TestFun(){
             cout<<": "; cin>>in;
             marker=l.InsertBefore(in,marker);
             break;
-        case 'D':
-            if(marker==NULL){
-                break;
-            }else{
-                marker=l.Delete(marker);
-            }
-            break;
         case 'S':
             cout<<": "; cin>>in;
             marker=l.Search(in);
-            break;
-        case 'P':
-            marker=l.Prev(marker);
-            break;
-        case 'N':
-            marker=l.Next(marker);
             break;
         case 'H':
             marker=l.Begin();

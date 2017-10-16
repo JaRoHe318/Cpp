@@ -10,31 +10,71 @@ public:
 
     class Iterator{
     public:
-        friend class List;                              //give access to list to access _ptr
-        Iterator();                                     //default ctor
-        Iterator(node<T>* p);                   //Point Iterator to where p is pointing to
-        operator bool();                                //casting operator: true if _ptr not NULL
-        //      this turned out to be a pain!
+        //give access to list to access _ptr
+        friend class List;
+
+        //default ctor
+        Iterator();
+
+        //Point Iterator to where p is pointing to
+        Iterator(node<T>* p=NULL):_ptr(p){
+
+        }
+
+        //casting operator: true if _ptr not NULL
+        //this turned out to be a pain!
+//        operator bool(){
+//            return _ptr==NULL;
+//        }
 
 
-        T& operator *();                        //dereference operator
-        T* operator ->();                       //member access operator
+        //dereference operator
+        T& operator *(){
+            return _ptr->_item;
+        }
 
-        bool is_null();                                 //true if _ptr is NULL
 
+        //member access operator
+        T* operator ->(){
+            return &(_ptr->_item);
+        }
+
+        //true if _ptr is NULL
+        bool is_null(){
+            return _ptr == NULL;
+        }
+
+        //true if left != right
         friend bool operator !=(const Iterator& left,
-                                const Iterator& right); //true if left != right
+                                const Iterator& right){
+            return (left._ptr!=right._ptr);
+        }
 
+        //true if left == right
         friend bool operator ==(const Iterator& left,
-                                const Iterator& right); //true if left == right
+                                const Iterator& right){
+            return (left._ptr==right._ptr);
+        }
 
-        Iterator& operator++();                         //member operator: ++it; or ++it = new_value
+        //member operator: ++it; or ++it = new_value
+        Iterator& operator++(){
+            _ptr=_ptr->_next;
+            //            return _ptr->_item;
+            return *this;
+        }
 
+        //friend operator: it++
         friend Iterator operator++(Iterator& it,
-                                   int unused);         //friend operator: it++
+                                   int unused){
+            Iterator hold;
+            hold = it;
+            it=it->_next;
+            return hold;
+        }
 
     private:
-        node<T>* _ptr;                          //pointer being encapsulated
+        //pointer being encapsulated
+        node<T>* _ptr;
     };
     List();
 
@@ -44,31 +84,31 @@ public:
     //    List& operator =(const List<T> &RHS);
 
 
-    node<T>* InsertHead(T i);           //inset i at the head of list
+    Iterator InsertHead(T i);           //inset i at the head of list
 
-    node<T>* InsertAfter(T i, node<T>* iMarker);  //insert i after iMarker
+    Iterator InsertAfter(T i, Iterator iMarker);  //insert i after iMarker
 
-    node<T>* InsertRandom(node<T>* iMarker);
+    Iterator InsertRandom(Iterator iMarker);
 
-    node<T>* InsertBefore(T i, node<T>* iMarker); //insert i before iMarker
-
-
-    node<T>* InsertSorted(T i);         //insert i. Assume sorted list
+    Iterator InsertBefore(T i, Iterator iMarker); //insert i before iMarker
 
 
+    Iterator InsertSorted(T i);         //insert i. Assume sorted list
 
-    node<T>* Delete(node<T>* iMarker);         //delete node pointed to by iMarker
+
+
+    //    Iterator Delete(Iterator iMarker);         //delete node pointed to by iMarker
 
 
 
     void Print() const;
 
-    node<T>* Search(const T &key);
+    Iterator Search(const T &key);
 
 
-    node<T>* Next(node<T>* iMarker);
+    //    Iterator Next(Iterator iMarker);
 
-    node<T>* Prev(node<T>* iMarker);    //get the previous node to iMarker
+    Iterator Prev(Iterator iMarker);    //get the previous node to iMarker
 
 
     T& operator[](int index);                   //return the item at index
@@ -118,34 +158,35 @@ List<T>::~List(){
 }
 
 template <class T>
-node<T>* List<T>::InsertHead(T i){
-    return _insert_head(head, i);
+typename List<T>::Iterator List<T>::InsertHead(T i){
+    return Iterator(_insert_head(head, i));
 }
 
 template <class T>
-node<T>* List<T>::InsertAfter(T i, node<T>* iMarker){
-    return _insertAfter(head, iMarker,i);
+typename List<T>::Iterator List<T>::InsertAfter(T i, Iterator iMarker){
+    return Iterator(_insertAfter(head, iMarker._ptr,i));
 }
 
 template <class T>
-node<T>* List<T>::InsertRandom(node<T>* iMarker){
-    return _insertRand(head,iMarker);
+typename List<T>::Iterator List<T>::InsertRandom(Iterator iMarker){
+    //    iMarker._ptr;
+    return Iterator(_insertRand(head,iMarker._ptr));
 }
 
 template <class T>
-node<T>* List<T>::InsertBefore(T i, node<T>* iMarker){
-
-}
-
-template <class T>
-node<T>* List<T>::InsertSorted(T i){
+typename List<T>::Iterator List<T>::InsertBefore(T i, Iterator iMarker){
 
 }
 
 template <class T>
-node<T>* List<T>::Delete(node<T>* iMarker){
-    _deleteNode(head,iMarker);
+typename List<T>::Iterator List<T>::InsertSorted(T i){
+
 }
+
+//template <class T>
+//typename List<T>::Iterator List<T>::Delete(Iterator iMarker){
+//    _deleteNode(head,iMarker);
+//}
 
 template<class T>
 void List<T>::Print()const {
@@ -153,23 +194,8 @@ void List<T>::Print()const {
 }
 
 template <class T>
-node<T>* List<T>::Search(const T& item){
-    return _search_list(head, item);
-}
-
-template <class T>
-node<T>* List<T>::Prev(node<T>* iMarker){
-    return _previousNode(head,iMarker);
-}
-
-template <class T>
-node<T>* List<T>::Next(node<T>* iMarker){
-    if(iMarker->_next==NULL){
-        return iMarker;
-    }else{
-        iMarker=iMarker->_next;
-        return iMarker;
-    }
+typename List<T>::Iterator List<T>::Search(const T& item){
+    return Iterator(_search_list(head, item));
 }
 
 template <class T>
@@ -180,11 +206,12 @@ T& List<T>::operator[](int index){
 
 template <class T>
 typename List<T>::Iterator List<T>::Begin() const{
-    return head;
+    return Iterator(head);
 }
 template <class T>
 typename List<T>::Iterator List<T>::End() const{
-    return _lastNode(head);
+    //    return _lastNode(head);
+    return Iterator(_lastNode(head));
 }
 
 template<class U>

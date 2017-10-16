@@ -6,4 +6,5 @@ CONFIG -= qt
 SOURCES += main.cpp
 
 HEADERS += \
-    list.h
+    list.h \
+    functs.h
