@@ -6,4 +6,4 @@ CONFIG -= qt
 SOURCES += main.cpp
 
 HEADERS += \
-    big3.h
+    list.h

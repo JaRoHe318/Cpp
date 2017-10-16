@@ -1,11 +1,11 @@
 using namespace std;
 #include <iostream>
 #include <ctime>
-#include "list_simple.h"
+
+#include "list.h"
 #include "node.h"
 
 void TestFun();
-void TestDelete();
 void Printer(node<int> *marker, List<int> l);
 
 
@@ -19,21 +19,6 @@ int main(){
 
     cout <<endl<<endl<< "-------------------------------" << endl;
     return 0;
-}
-
-void TestDelete(){
-    List<int> l;
-    node<int>* temp=l.Begin();
-    node<int>* marker=l.Begin();
-
-    for(int i = 0;i<10;i++){
-        marker=l.InsertHead(i);
-    }
-    Printer(marker,l);
-
-    l.Delete(marker);
-
-    Printer(marker,l);
 }
 
 void Printer(node<int>* marker,List<int> l){
@@ -63,6 +48,7 @@ void TestFun(){
     int in=0;
 
     node<int>* marker=NULL;
+    node<int>* temp = NULL;
     List<int> l;
     List<int> c;
 
@@ -76,13 +62,12 @@ void TestFun(){
             marker=l.InsertRandom(marker);
             break;
         case 'C':
-            cout<<"\n\n";
-            Printer(marker,l);
+            temp = c.Copy(l);
 
-            c.Copy(c);
-
-            cout<<"\n\n";
-            Printer(marker,c);
+            cout<<"\n=================\n";
+            cout<<c;
+            cout<<"\n=================";
+            break;
         case 'A':
             cout<<": "; cin>>in;
             marker=l.InsertAfter(in, marker);

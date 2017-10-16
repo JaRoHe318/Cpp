@@ -39,6 +39,7 @@ node<T>* _insert_head(node<T>* &head_ptr, const T& item){
 
 template <class T>
 node<T>* _insertAfter(node<T>* &head, node<T>* afterThis ,const T &insertThis){
+    cout<<"--\n\n";
     if(afterThis==NULL){
         return _insert_head(head,insertThis);
     }else{
@@ -51,11 +52,8 @@ node<T>* _insertAfter(node<T>* &head, node<T>* afterThis ,const T &insertThis){
 
 template<class T>
 node<T>* _insertRand(node<T>* &head,node<T>* afterThis){
-//    srand(time(0));
     int ran=rand() % 100 + 1;
-    //    _insert_head(head,ran);
-    _insertAfter(head, afterThis, ran);
-
+    return _insertAfter(head, afterThis, ran);
 }
 
 template<class T>
@@ -96,8 +94,17 @@ node<T>* _deleteNode(node<T>* &head, node<T>* deleteThis){
 }
 
 template<class T>
-node<T>* _copyList(node<T>* head){
-
+node<T>* _copyList(const node<T>* head){
+    node<T>* copy = NULL;
+    node<T>* w = copy;
+    T tempVal;
+    while(head!=NULL){
+        cout<<".";
+        tempVal = head->_item;
+        head=head->_next;
+        w=_insertAfter(copy,w,tempVal);
+    }
+    return copy;
 }
 
 template<class T>
@@ -116,7 +123,6 @@ node<T>* _lastNode(node<T>* head){
 template <class T>
 void _deleteAll(node<T>* &head){
     node<int>* walker = head;
-
     while (walker!=NULL){
         cout<<"."<<endl;
         _deleteNode(head, walker);

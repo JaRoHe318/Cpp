@@ -1,65 +1,34 @@
 using namespace std;
 #include <iostream>
-
-template<class T>
-struct node{
-    T _item;
-    node<T>* _next;
-    node(T item= T());
-    template <class U>//if you have an op in a Template that is being defined outside of this?
-    friend ostream& operator<<(ostream& outs, const node<U>& print_me);
-};
-
-template<class T>
-node<T>::node(T item):_item(item), _next(NULL){
-
-}
-
-template <class U>
-ostream& operator<<(ostream& outs, const node<U>& print_me){
-    outs<<"["<<print_me._item<<"] ->";
-    return outs;
-}
-
-template<class T>
-node<T>* insert_head(node<T>* &head_ptr, const T& item){
-    //1. create a new node(item)
-    node<T>* temp = new node<T>(item);
-    //2. temp's next points to wehere head is poijnting to:
-    temp->_next = head_ptr;
-    //3. point head_ptr to this new node:
-    head_ptr = temp;
-    return head_ptr;
-}
-
-template<class T>
-void print_lists(node<T>* head_ptr){
-    //1. Walker to head_ptr
-    node<T>* walker = head_ptr;
-    //2. loop and print until walker hits NULL
-    cout<<"H ->";
-    while(walker!=NULL){
-        cout<<*walker;  //print this node
-        walker = walker->_next; //go to the next item
-    }
-    cout<<" NULL";
-}
-
+#include "list.h"
 
 int main(){
-    cout << "\n\n\n\n======================================================================================================\n\n\n\n";
+    cout<<endl<<endl<<"Testing a list of ints:"<<endl;
+    int a[] = {1,1,3,5,8,13};           //an array! (sorry about this!)
 
-    node<int>* head=NULL;
-    for(int i=0;i<6;i++){
-        insert_head(head, i);
+    List<int> list(a, 6);               //instantiate a List object
+
+    List<int>::Iterator it;             //a List Itertor object
+    for (it=list.Begin(); it!=list.End(); it++){//postfix ++
+        //looping through all the elements of List using the Iterator
+        cout<<*it<<"|";
     }
 
+    //delete it;      //cannot be done.
+    //delete it._ptr; //cannot be done.
 
-    print_lists(head);
+    cout<<endl<<endl<<"Testing a list of strings:"<<endl;
 
+    string s[] = {string("Curly"), string("Moe"), string("Larry")};
+    List<string> slist(s, 3);
+    List<string>::Iterator sit;           //a List Itertor object
+    for (sit=slist.Begin();
+         sit!=slist.End();
+         ++sit){                          //prefix ++
+        //looping through all the elements of List using the Iterator
+        cout<<*sit<<"|";
+    }
 
-
-
-    cout <<"\n\n\n======================================================================================================\n\n";
+    cout <<endl<<endl<< "=======================" << endl<<endl;
     return 0;
 }

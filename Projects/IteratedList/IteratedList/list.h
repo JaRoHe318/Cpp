@@ -13,7 +13,7 @@ public:
     List();
 
             ~List();
-    //        List(const List<T> &copyThis);
+            List(const List<T> &copyThis);
             List& operator =(const List<T> &RHS);
 
     node<T>* InsertHead(T i);           //inset i at the head of list
@@ -61,23 +61,22 @@ private:
 template <class T>
 List<T>::List(){
     head = NULL;
-}/*
+}
 template <class T>
 List<T>::List(const List<T> &copyThis){
-
+    return _copyList(copy.Begin());
 }
 
-template <class T>
-List<T>& List<T>::operator =(const List<T>& RHS){
-    if(this==&RHS){
-        return *this;
-    }
+//template <class T>
+//List<T>& List<T>::operator =(const List<T>& RHS){
+//    if(this==&RHS){
+//        return *this;
+//    }
+//}
 
-
-}*/
 template <class T>
 List<T>::~List(){
-//    _deleteAll(head);
+    _deleteAll(head);
 }
 template <class T>
 node<T>* List<T>::InsertHead(T i){
