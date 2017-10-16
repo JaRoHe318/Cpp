@@ -1,10 +1,7 @@
 using namespace std;
 #include <iostream>
 #include <ctime>
-<<<<<<< HEAD
 
-=======
->>>>>>> bffa3538466a792e78f990eb2f63cae2380b673e
 #include "list.h"
 #include "node.h"
 
@@ -17,16 +14,12 @@ int main(){
     cout <<endl<<endl<< "-------------------------------" << endl;
     srand(time(0));
 
-        TestFun();
+    TestFun();
 
     cout <<endl<<endl<< "-------------------------------" << endl;
     return 0;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> bffa3538466a792e78f990eb2f63cae2380b673e
 void Printer(node<int>* marker,List<int> l){
     node<int>* walker = l.Begin();
 
@@ -56,7 +49,6 @@ void TestFun(){
     node<int>* marker=NULL;
     node<int>* temp = NULL;
     List<int> l;
-    List<int> c;
 
     Printer(marker,l);
     do{
@@ -67,24 +59,6 @@ void TestFun(){
         case 'R':
             marker=l.InsertRandom(marker);
             break;
-<<<<<<< HEAD
-        case 'C':
-            temp = c.Copy(l);
-
-            cout<<"\n=================\n";
-            cout<<c;
-            cout<<"\n=================";
-            break;
-=======
-//        case 'C':
-//            cout<<"\n\n";
-//            Printer(marker,l);
-
-////            c.Copy(c);
-
-//            cout<<"\n\n";
-//            Printer(marker,c);
->>>>>>> bffa3538466a792e78f990eb2f63cae2380b673e
         case 'A':
             cout<<": "; cin>>in;
             marker=l.InsertAfter(in, marker);
@@ -97,7 +71,7 @@ void TestFun(){
             if(marker==NULL){
                 break;
             }else{
-            marker=l.Delete(marker);
+                marker=l.Delete(marker);
             }
             break;
         case 'S':

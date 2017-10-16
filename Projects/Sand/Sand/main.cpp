@@ -8,6 +8,8 @@ int main(){
 
     List<int> list(a, 6);               //instantiate a List object
 
+
+
     List<int>::Iterator it;             //a List Itertor object
     for (it=list.Begin(); it!=list.End(); it++){//postfix ++
         //looping through all the elements of List using the Iterator

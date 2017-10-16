@@ -13,12 +13,10 @@ public:
     List();
 
     ~List();
-    List(const List<T> &copyThis);
+//    List(const List<T> &copyThis);
     //        List& operator =(const List<T> &RHS);
 
     node<T>* InsertHead(T i);           //inset i at the head of list
-
-    node<T>* Copy(List<T> L);
 
     node<T>* InsertAfter(T i, node<T>* iMarker);  //insert i after iMarker
 
@@ -71,13 +69,7 @@ List<T>::List(){
 //    w = copyThis.Begin();
 //    _copyList(w);
 //}
-template<class T>
-node<T>* List<T>::Copy(List<T> L){
-    cout<<"\nCopyList\n";
-    node<T>* w = NULL;
-    w = L.Begin();
-    _copyList(w);
-}
+
 
 //template <class T>
 //List<T>& List<T>::operator =(const List<T>& RHS){
@@ -87,6 +79,7 @@ node<T>* List<T>::Copy(List<T> L){
 
 
 //}
+
 template <class T>
 List<T>::~List(){
     _deleteAll(head);

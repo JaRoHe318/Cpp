@@ -1,25 +1,47 @@
 #ifndef LIST_H
 #define LIST_H
 
-
 #include "functions.h"
 #include "node.h"
 
-//start
 template <class T>
-class List{
-
+class List{    
 public:
+
+    class Iterator{
+    public:
+        friend class List;                              //give access to list to access _ptr
+        Iterator();                                     //default ctor
+        Iterator(node<T>* p);                   //Point Iterator to where p is pointing to
+        operator bool();                                //casting operator: true if _ptr not NULL
+        //      this turned out to be a pain!
+
+
+        T& operator *();                        //dereference operator
+        T* operator ->();                       //member access operator
+
+        bool is_null();                                 //true if _ptr is NULL
+
+        friend bool operator !=(const Iterator& left,
+                                const Iterator& right); //true if left != right
+
+        friend bool operator ==(const Iterator& left,
+                                const Iterator& right); //true if left == right
+
+        Iterator& operator++();                         //member operator: ++it; or ++it = new_value
+
+        friend Iterator operator++(Iterator& it,
+                                   int unused);         //friend operator: it++
+
+    private:
+        node<T>* _ptr;                          //pointer being encapsulated
+    };
     List();
 
-            ~List();
-<<<<<<< HEAD
-            List(const List<T> &copyThis);
-            List& operator =(const List<T> &RHS);
-=======
-    //        List(const List<T> &copyThis);
-//            List& operator =(const List<T> &RHS);
->>>>>>> bffa3538466a792e78f990eb2f63cae2380b673e
+    ~List();
+    //    List(const List<T> &copyThis);
+    //    List& operator =(const List<T> &RHS);
+
 
     node<T>* InsertHead(T i);           //inset i at the head of list
 
@@ -61,16 +83,17 @@ private:
     node<T>* head;
 
 };
-//end
+
 
 template <class T>
 List<T>::List(){
     head = NULL;
 }
-template <class T>
-List<T>::List(const List<T> &copyThis){
-    return _copyList(copy.Begin());
-}
+
+//template <class T>
+//List<T>::List(const List<T> &copyThis){
+//    return _copyList(copyThis.Begin());
+//}
 
 //template <class T>
 //List<T>& List<T>::operator =(const List<T>& RHS){
@@ -83,6 +106,7 @@ template <class T>
 List<T>::~List(){
     _deleteAll(head);
 }
+
 template <class T>
 node<T>* List<T>::InsertHead(T i){
     return _insert_head(head, i);
@@ -111,7 +135,6 @@ node<T>* List<T>::InsertSorted(T i){
 template <class T>
 node<T>* List<T>::Delete(node<T>* iMarker){
     _deleteNode(head,iMarker);
-//    _deleteAll(head);
 }
 
 template<class T>
@@ -151,9 +174,8 @@ node<T>* List<T>::Begin() const{
 }
 template <class T>
 node<T>* List<T>::End() const{
-   return _lastNode(head);
+    return _lastNode(head);
 }
-
 
 template<class U>
 ostream& operator <<(ostream& outs,const List<U>& l){

@@ -1,6 +1,5 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
-
 using namespace std;
 #include <iostream>
 #include "node.h"
@@ -38,7 +37,6 @@ node<T>* _insert_head(node<T>* &head_ptr, const T& item){
 
 template <class T>
 node<T>* _insertAfter(node<T>* &head, node<T>* afterThis ,const T &insertThis){
-    cout<<"--\n\n";
     if(afterThis==NULL){
         return _insert_head(head,insertThis);
     }else{
@@ -52,20 +50,20 @@ node<T>* _insertAfter(node<T>* &head, node<T>* afterThis ,const T &insertThis){
 template<class T>
 node<T>* _insertRand(node<T>* &head,node<T>* afterThis){
     int ran=rand() % 100 + 1;
-    return _insertAfter(head, afterThis, ran);
+    _insertAfter(head, afterThis, ran);
 }
 
 template<class T>
 node<T>* _insertBefore(node<T>* &head,node<T>* beforeThis ,const T &insertThis){
 
 }
+
 template<class T>
 node<T>* _previousNode(node<T>* head, node<T>* prevToThis){
     node<int>* walker = head;
     node<int>* stalker = NULL;
-
     if (prevToThis == head){
-        return head;
+        return NULL;
     }
     while (walker!=NULL){
         stalker=walker;
@@ -75,33 +73,33 @@ node<T>* _previousNode(node<T>* head, node<T>* prevToThis){
         }
     }
 }
+
 template<class T>
 node<T>* _deleteNode(node<T>* &head, node<T>* deleteThis){
     node<T>* temp = deleteThis->_next;
     node<T>* prev = _previousNode(head,deleteThis); //prev should return null if deleteThis is pointing to head
-    //
-    if (prev == NULL){//means you are trying to delete head
-        head = temp;
-    }
+
     if(deleteThis==head){//means you are trying to delete head. ALSO
         head=temp;
     }else{
         prev->_next=temp;
+        delete deleteThis;
     }
-    delete deleteThis;
     return head;
 }
 
 template<class T>
-node<T>* _copyList(const node<T>* head){
+node<T>* _copyList(node<T>* head){
+    node<T>* w = head;
     node<T>* copy = NULL;
-    node<T>* w = copy;
+
     T tempVal;
-    while(head!=NULL){
-        cout<<".";
-        tempVal = head->_item;
-        head=head->_next;
-        w=_insertAfter(copy,w,tempVal);
+
+    while(w!=NULL){
+        tempVal = w->_item;
+        _insertAfter(copy,w,tempVal);
+//        _insertAfter(copy,w,w->_item);
+        w=w->_next;
     }
     return copy;
 }
@@ -119,15 +117,15 @@ node<T>* _lastNode(node<T>* head){
     return head;
 }
 
+
 template <class T>
 void _deleteAll(node<T>* &head){
     node<int>* walker = head;
+
     while (walker!=NULL){
-        cout<<"."<<endl;
         _deleteNode(head, walker);
         walker = walker->_next;
     }
 }
-
 
 #endif // FUNCTIONS_H

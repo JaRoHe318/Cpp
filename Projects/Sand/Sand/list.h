@@ -56,11 +56,11 @@ public:
     Iterator Begin() const;         //an iterator to the start of List
     Iterator End() const;           //an iterator to the end of List
 
-//    T* copy_array(T* src, int size);
-
-//    void destroy_array(T* &src);
 
 private:
+    T* copy_array(T* src, int size);
+    void destroy_array(T* &src);
+
     T* _a_list;                     //the List raw data
     int _how_many;                  //size of List
 };
@@ -68,10 +68,9 @@ private:
 //=========================================================================
 
 template <class T>
-List<T>::List(T *array, int size){
-//    _a_list = copy_array(array, size);
-//    _how_many = size;
-
+List<T>::List(T* array, int size){
+    _a_list = copy_array(array, size);
+    _how_many = size;
 }
 //---- BIG THREE --------------------------------
 template <class T>
@@ -113,7 +112,7 @@ typename List<T>::Iterator List<T>::End() const{
 
 
 template <class T>
-void destroy_array(T* &src){
+void List<T>::destroy_array(T* &src){
     if (src){
         delete[] src;
     }
@@ -121,7 +120,7 @@ void destroy_array(T* &src){
 }
 
 template <class T>
-T* copy_array(T* src, int size){
+T* List<T>::copy_array(T* src, int size){
     T* copy = new T[size];
     for (int i=0; i<size; i++){
         copy[i] = src[i];
