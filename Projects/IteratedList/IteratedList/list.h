@@ -38,6 +38,7 @@ public:
     };
     List();
 
+    //NotWorkingThree
     ~List();
     //    List(const List<T> &copyThis);
     //    List& operator =(const List<T> &RHS);
@@ -72,9 +73,9 @@ public:
 
     T& operator[](int index);                   //return the item at index
 
-    node<T>* Begin() const;                     //return the head of the list
+    Iterator Begin() const;                     //return the head of the list
 
-    node<T>* End() const;                       //return the tail of the list
+    Iterator End() const;                       //return the tail of the list
 
     template <class U>
     friend ostream& operator <<(ostream& outs, const List<U>& l); //insertion operator for list
@@ -84,11 +85,20 @@ private:
 
 };
 
+/*
+    Iterator Begin() const;                                     //Iterator to the head node
+    Iterator End() const;                                       //Iterator to NULL
+    Iterator LastNode() const;                                  //Iterator to the last node
+private:
+    node<ITEM_TYPE>* _head_ptr;
+ */
+
 
 template <class T>
 List<T>::List(){
     head = NULL;
 }
+
 
 //template <class T>
 //List<T>::List(const List<T> &copyThis){
@@ -169,11 +179,11 @@ T& List<T>::operator[](int index){
 }
 
 template <class T>
-node<T>* List<T>::Begin() const{
+typename List<T>::Iterator List<T>::Begin() const{
     return head;
 }
 template <class T>
-node<T>* List<T>::End() const{
+typename List<T>::Iterator List<T>::End() const{
     return _lastNode(head);
 }
 
