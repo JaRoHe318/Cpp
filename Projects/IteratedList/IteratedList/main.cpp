@@ -26,29 +26,30 @@ void Printer(List<int>::Iterator marker,List<int> l){
     cout<<"H-> ";
 
     if(walker.is_null()){
-//        marker=l.Begin();
-    }else{
-        while (!walker.is_null()){
-            if(walker==marker){
-                cout<<"{"<<*walker<<"} ";
-                ++walker;
-            }else{
-                cout<<"["<<*walker<<"] ";          //print this node
-               ++ walker;
-            }
+
+    }
+
+    while (!walker.is_null()){
+        if(walker==marker||marker==NULL||marker==l.Begin()){
+            cout<<"{"<<*walker<<"} ";
+            ++walker;
+        }else{
+            cout<<"["<<*walker<<"] ";          //print this node
+            ++ walker;
         }
     }
-    cout<<" ->|||"<<endl;
+    cout<<" ->|||\n";
 }
+
 
 void TestFun(){
     char ans='x';
     int in=0;
 
     List<int> l;
+    List<int> n;
     List<int>::Iterator marker=l.Begin();
 
-    Printer(marker,l);
     do{
         cout<<"\n\n [R]andom [A]fter [B]efore [S]earch [P]revious  [N]ext  [H]ome  [E]nd e[X]it\n";
         cout<<": "; cin>>ans;

@@ -91,18 +91,24 @@ node<T>* _deleteNode(node<T>* &head, node<T>* deleteThis){
 
 template<class T>
 node<T>* _copyList(node<T>* head){
+    T tempItem;
     node<T>* w = head;
     node<T>* copy = NULL;
+    node<T>* copyPtr=NULL;
 
-    T tempVal;
-
+    if(copy==NULL){
+        tempItem=w->_item;
+        copy=_insert_head(head,tempItem);
+        copyPtr=copy;
+        w=w->_next;
+    }else{
     while(w!=NULL){
-        tempVal = w->_item;
-        _insertAfter(copy,w,tempVal);
-        //        _insertAfter(copy,w,w->_item);
+        tempItem = w->_item;
+        _insertAfter(copy,w,tempItem);
         w=w->_next;
     }
-    return copy;
+    }
+    return copyPtr;
 }
 
 template<class T>
