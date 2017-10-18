@@ -99,7 +99,7 @@ node<T>* _copyList(node<T>* head){
     while(w!=NULL){
         tempVal = w->_item;
         _insertAfter(copy,w,tempVal);
-//        _insertAfter(copy,w,w->_item);
+        //        _insertAfter(copy,w,w->_item);
         w=w->_next;
     }
     return copy;
@@ -128,5 +128,24 @@ void _deleteAll(node<T>* &head){
         walker = walker->_next;
     }
 }
+
+template <typename T>//insert
+node<T>* InsertSorted(node<T>* &head, T item, bool ascending=true){
+
+}
+
+template <typename T>//insert or add if a dup
+node<T>* InsertSorted_and_add(node<T>* &head, T item, bool ascending=true){
+
+}
+//node after which this
+//    item goes //order: 0 ascending
+template <typename T>
+node<T>* WhereThisGoes(node<T>* head, T item,bool ascending=true){
+
+}
+
+
+
 
 #endif // FUNCTIONS_H
