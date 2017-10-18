@@ -26,7 +26,7 @@ void Printer(List<int>::Iterator marker,List<int> l){
     cout<<"H-> ";
 
     if(walker.is_null()){
-
+//        marker=l.Begin();
     }else{
         while (!walker.is_null()){
             if(walker==marker){
@@ -68,6 +68,9 @@ void TestFun(){
         case 'S':
             cout<<": "; cin>>in;
             marker=l.Search(in);
+            break;
+        case 'P':
+            marker=l.Prev(marker);
             break;
         case 'N':
             marker=l.Next(marker);

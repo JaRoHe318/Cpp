@@ -50,9 +50,10 @@ node<T>* _insertAfter(node<T>* &head, node<T>* afterThis ,const T &insertThis){
 }
 
 template<class T>
-node<T>* _insertRand(node<T>* &head,node<T>* afterThis){
+node<T>* _insertRand(node<T>* &head,node<T>* afterThis,bool ascending=true){
     int ran=rand() % 100 + 1;
-    return _insertAfter(head, afterThis, ran);
+//    return _insertAfter(head, afterThis, ran);
+    return _InsertSorted(head,ran,ascending);
 }
 
 template<class T>
@@ -62,8 +63,8 @@ node<T>* _insertBefore(node<T>* &head,node<T>* beforeThis ,const T &insertThis){
 
 template<class T>
 node<T>* _previousNode(node<T>* head, node<T>* prevToThis){
-    node<int>* walker = head;
-    node<int>* stalker = NULL;
+    node<T>* walker = head;
+    node<T>* stalker = NULL;
     if (prevToThis == head){
         return NULL;
     }
@@ -129,5 +130,40 @@ void _deleteAll(node<T>* &head){
         walker = walker->_next;
     }
 }
+
+template <typename T>//insert
+node<T>* _InsertSorted(node<T>* &head, T item, bool ascending=true){
+    node<T>* w = head;
+    node<T>* s = NULL;
+
+    if(head==NULL){
+        w=_insert_head(head,item);
+    }else{
+        while(w!=NULL){
+            s=w;
+            w=w->_next;
+            if(w->_next==NULL){
+                _insertAfter(head,s,item);
+            }else
+            if(w->_item>=item){
+                _insertAfter(head,s,item);
+            }
+        }
+    }
+}
+
+template <typename T>//insert or add if a dup
+node<T>* InsertSorted_and_add(node<T>* &head, T item, bool ascending=true){
+
+}
+//node after which this
+//    item goes //order: 0 ascending
+template <typename T>
+node<T>* WhereThisGoes(node<T>* head, T item,bool ascending=true){
+
+}
+
+
+
 
 #endif // FUNCTIONS_H

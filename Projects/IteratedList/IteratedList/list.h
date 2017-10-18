@@ -180,7 +180,7 @@ typename List<T>::Iterator List<T>::InsertBefore(T i, Iterator iMarker){
 
 template <class T>
 typename List<T>::Iterator List<T>::InsertSorted(T i){
-
+    return Iterator(_InsertSorted(head, i, ))
 }
 
 //template <class T>
@@ -206,6 +206,11 @@ typename List<T>::Iterator List<T>::Next(Iterator iMarker){
     template <class T>
     typename List<T>::Iterator List<T>::Search(const T& item){
         return Iterator(_search_list(head, item));
+    }
+
+    template <class T>
+    typename List<T>::Iterator List<T>::Prev(Iterator iMarker){
+    return Iterator(_previousNode(head,iMarker._ptr));
     }
 
     template <class T>
