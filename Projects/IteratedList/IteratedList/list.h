@@ -80,8 +80,8 @@ public:
 
     //NotWorkingThree
     ~List();
-    //    List(const List<T> &copyThis);
-    //    List& operator =(const List<T> &RHS);
+        List(const List<T> &copyThis);
+        List& operator =(const List<T> &RHS);
 
 
     Iterator InsertHead(T i);           //inset i at the head of list
@@ -140,17 +140,17 @@ List<T>::List(){
 }
 
 
-//template <class T>
-//List<T>::List(const List<T> &copyThis){
-//    return _copyList(copyThis.Begin());
-//}
+template <class T>
+List<T>::List(const List<T> &copyThis){
+    head=_copyList(copyThis.head);
+}
 
-//template <class T>
-//List<T>& List<T>::operator =(const List<T>& RHS){
-//    if(this==&RHS){
-//        return *this;
-//    }
-//}
+template <class T>
+List<T>& List<T>::operator =(const List<T>& RHS){
+    if(this==&RHS){
+        return *this;
+    }
+}
 
 template <class T>
 List<T>::~List(){
