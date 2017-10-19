@@ -71,11 +71,10 @@ public:
     };
     List();
 
-    //NotWorkingThree
+    //Big Three
     ~List();
-    //    List(const List<T> &copyThis);
-    //    List& operator =(const List<T> &RHS);
-
+    List(const List<T> &copyThis);
+    List& operator =(const List<T> &RHS);
 
     Iterator InsertHead(T i);           //inset i at the head of list
 
@@ -85,24 +84,17 @@ public:
 
     Iterator InsertBefore(T i, Iterator iMarker); //insert i before iMarker
 
-
     Iterator InsertSorted(T i);         //insert i. Assume sorted list
 
-
-
-    //    Iterator Delete(Iterator iMarker);         //delete node pointed to by iMarker
-
-
+    Iterator Delete(Iterator iMarker);         //delete node pointed to by iMarker
 
     void Print() const;
 
     Iterator Search(const T &key);
 
-
-        Iterator Next(Iterator iMarker);
+    Iterator Next(Iterator iMarker);
 
     Iterator Prev(Iterator iMarker);    //get the previous node to iMarker
-
 
     T& operator[](int index);                   //return the item at index
 
@@ -126,17 +118,19 @@ List<T>::List(){
 }
 
 
-//template <class T>
-//List<T>::List(const List<T> &copyThis){
-//    return _copyList(copyThis.Begin());
-//}
+template <class T>
+List<T>::List(const List<T> &copyThis){
+    head=_copyList(copyThis.head);
+}
 
-//template <class T>
-//List<T>& List<T>::operator =(const List<T>& RHS){
-//    if(this==&RHS){
-//        return *this;
-//    }
-//}
+template <class T>
+List<T>& List<T>::operator =(const List<T>& RHS){
+    if(this==&RHS){
+        return *this;
+    }
+    _deleteAll(head);
+    head=_copyList(RHS.head);
+}
 
 template <class T>
 List<T>::~List(){
@@ -155,7 +149,6 @@ typename List<T>::Iterator List<T>::InsertAfter(T i, Iterator iMarker){
 
 template <class T>
 typename List<T>::Iterator List<T>::InsertRandom(Iterator iMarker){
-    //    iMarker._ptr;
     return Iterator(_insertRand(head,iMarker._ptr,_order));
 }
 
@@ -169,19 +162,18 @@ typename List<T>::Iterator List<T>::InsertSorted(T i){
     return Iterator(InsertSorted(head,i,_order));
 }
 
-//template <class T>
-//typename List<T>::Iterator List<T>::Delete(Iterator iMarker){
-//    _deleteNode(head,iMarker);
-//}
+template <class T>
+typename List<T>::Iterator List<T>::Delete(Iterator iMarker){
+    _deleteNode(head,iMarker);
+}
 
-template<class T>
-void List<T>::Print()const {
+    template<class T>
+    void List<T>::Print()const {
     _print_list(cout, head);
 }
 
-
-template <class T>
-typename List<T>::Iterator List<T>::Next(Iterator iMarker){
+    template <class T>
+    typename List<T>::Iterator List<T>::Next(Iterator iMarker){
     if(iMarker.is_null()){
         return ++iMarker;
     }else{
@@ -209,6 +201,7 @@ typename List<T>::Iterator List<T>::Next(Iterator iMarker){
     typename List<T>::Iterator List<T>::Begin() const{
         return Iterator(head);
     }
+
     template <class T>
     typename List<T>::Iterator List<T>::End() const{
         //    return _lastNode(head);

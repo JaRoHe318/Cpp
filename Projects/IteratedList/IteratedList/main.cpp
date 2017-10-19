@@ -47,7 +47,6 @@ void TestFun(){
     int in=0;
 
     List<int> l;
-    List<int> n;
     List<int>::Iterator marker=l.Begin();
 
     do{

@@ -27,20 +27,21 @@ void Printer(List<int>::Iterator marker,List<int> l){
     cout<<"H-> ";
 
     if(walker.is_null()){
-//        marker=l.Begin();
-    }else{
-        while (!walker.is_null()){
-            if(walker==marker){
-                cout<<"{"<<*walker<<"} ";
-                ++walker;
-            }else{
-                cout<<"["<<*walker<<"] ";          //print this node
-               ++ walker;
-            }
+
+    }
+
+    while (!walker.is_null()){
+        if(walker==marker||marker==NULL||marker==l.Begin()){
+            cout<<"{"<<*walker<<"} ";
+            ++walker;
+        }else{
+            cout<<"["<<*walker<<"] ";          //print this node
+            ++ walker;
         }
     }
-    cout<<" ->|||"<<endl;
+    cout<<" ->|||\n";
 }
+
 
 void TestFun(){
     char ans='x';
