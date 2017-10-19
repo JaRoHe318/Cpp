@@ -5,6 +5,4 @@ CONFIG -= qt
 
 SOURCES += main.cpp
 
-HEADERS += \
-    list.h \
-    functs.h
+HEADERS +=
