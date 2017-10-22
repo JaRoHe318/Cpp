@@ -47,7 +47,7 @@ class Poly{
 public:
 
     Poly();
-    Poly(int term_array[], int order);
+    Poly(double term_array[], int order);//was int termarray[]?
 
     //big three?
 

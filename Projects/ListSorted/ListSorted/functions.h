@@ -91,20 +91,27 @@ node<T>* _deleteNode(node<T>* &head, node<T>* deleteThis){
     return head;
 }
 
+
 template<class T>
 node<T>* _copyList(node<T>* head){
+    T tempItem;
     node<T>* w = head;
     node<T>* copy = NULL;
+    node<T>* copyPtr=NULL;
 
-    T tempVal;
-
+    if(copy==NULL){
+        tempItem=w->_item;
+        copy=_insert_head(head,tempItem);
+        copyPtr=copy;
+        w=w->_next;
+    }else{
     while(w!=NULL){
-        tempVal = w->_item;
-        _insertAfter(copy,w,tempVal);
-//        _insertAfter(copy,w,w->_item);
+        tempItem = w->_item;
+        _insertAfter(copy,w,tempItem);
         w=w->_next;
     }
-    return copy;
+    }
+    return copyPtr;
 }
 
 template<class T>
@@ -156,6 +163,7 @@ template <typename T>//insert or add if a dup
 node<T>* InsertSorted_and_add(node<T>* &head, T item, bool ascending=true){
 
 }
+
 //node after which this
 //    item goes //order: 0 ascending
 template <typename T>

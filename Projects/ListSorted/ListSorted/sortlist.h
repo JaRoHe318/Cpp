@@ -59,9 +59,10 @@ public:
         //friend operator: it++
         friend Iterator operator++(Iterator& it,
                                    int unused){
-            Iterator hold;
-            hold = it;
-            it=it->_next;
+            List<T>::Iterator hold=it;
+//            hold = it;
+
+            it=it._ptr->_next;
             return hold;
         }
 
@@ -117,7 +118,6 @@ List<T>::List(){
     head = NULL;
 }
 
-
 template <class T>
 List<T>::List(const List<T> &copyThis){
     head=_copyList(copyThis.head);
@@ -167,13 +167,13 @@ typename List<T>::Iterator List<T>::Delete(Iterator iMarker){
     _deleteNode(head,iMarker);
 }
 
-    template<class T>
-    void List<T>::Print()const {
+template<class T>
+void List<T>::Print()const {
     _print_list(cout, head);
 }
 
-    template <class T>
-    typename List<T>::Iterator List<T>::Next(Iterator iMarker){
+template <class T>
+typename List<T>::Iterator List<T>::Next(Iterator iMarker){
     if(iMarker.is_null()){
         return ++iMarker;
     }else{
@@ -181,36 +181,35 @@ typename List<T>::Iterator List<T>::Delete(Iterator iMarker){
     }
 }
 
-    template <class T>
-    typename List<T>::Iterator List<T>::Search(const T& item){
-        return Iterator(_search_list(head, item));
-    }
+template <class T>
+typename List<T>::Iterator List<T>::Search(const T& item){
+    return Iterator(_search_list(head, item));
+}
 
-    template <class T>
-    typename List<T>::Iterator List<T>::Prev(Iterator iMarker){
+template <class T>
+typename List<T>::Iterator List<T>::Prev(Iterator iMarker){
     return Iterator(_previousNode(head,iMarker._ptr));
-    }
+}
 
-    template <class T>
-    T& List<T>::operator[](int index){
-        T inside;
-        return inside;
-    }
+template <class T>
+T& List<T>::operator[](int index){
+    T inside;
+    return inside;
+}
 
-    template <class T>
-    typename List<T>::Iterator List<T>::Begin() const{
-        return Iterator(head);
-    }
+template <class T>
+typename List<T>::Iterator List<T>::Begin() const{
+    return Iterator(head);
+}
 
-    template <class T>
-    typename List<T>::Iterator List<T>::End() const{
-        //    return _lastNode(head);
-        return Iterator(_lastNode(head));
-    }
+template <class T>
+typename List<T>::Iterator List<T>::End() const{
+    return Iterator(_lastNode(head));
+}
 
-    template<class U>
-    ostream& operator <<(ostream& outs,const List<U>& l){
-        return _print_list(outs, l.head);
-    }
+template<class U>
+ostream& operator <<(ostream& outs,const List<U>& l){
+    return _print_list(outs, l.head);
+}
 
 #endif // LIST_H

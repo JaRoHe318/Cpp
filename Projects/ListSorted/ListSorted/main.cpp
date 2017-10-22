@@ -50,7 +50,6 @@ void TestFun(){
     List<int> l;
     List<int>::Iterator marker=l.Begin();
 
-    Printer(marker,l);
     do{
         cout<<"\n\n [R]andom [A]fter [B]efore [S]earch [P]revious  [N]ext  [H]ome  [E]nd e[X]it\n";
         cout<<": "; cin>>ans;
