@@ -50,10 +50,9 @@ node<T>* _insertAfter(node<T>* &head, node<T>* afterThis ,const T &insertThis){
 }
 
 template<class T>
-node<T>* _insertRand(node<T>* &head,node<T>* afterThis,bool ascending=true){
+node<T>* _insertRand(node<T>* &head,node<T>* afterThis){
     int ran=rand() % 100 + 1;
-//    return _insertAfter(head, afterThis, ran);
-    return _InsertSorted(head,ran,ascending);
+    return _insertAfter(head, afterThis, ran);
 }
 
 template<class T>

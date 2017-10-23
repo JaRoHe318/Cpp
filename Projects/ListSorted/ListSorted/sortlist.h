@@ -52,7 +52,6 @@ public:
         //member operator: ++it; or ++it = new_value
         Iterator& operator++(){
             _ptr=_ptr->_next;
-            //            return _ptr->_item;
             return *this;
         }
 
@@ -149,7 +148,7 @@ typename List<T>::Iterator List<T>::InsertAfter(T i, Iterator iMarker){
 
 template <class T>
 typename List<T>::Iterator List<T>::InsertRandom(Iterator iMarker){
-    return Iterator(_insertRand(head,iMarker._ptr,_order));
+    return Iterator(_insertRand(head,iMarker._ptr));
 }
 
 template <class T>

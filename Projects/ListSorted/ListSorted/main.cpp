@@ -3,7 +3,7 @@ using namespace std;
 #include <iostream>
 #include <ctime>
 
-#include "sortlist.h";
+#include "sortlist.h"
 #include "node.h"
 
 void TestFun();
@@ -29,14 +29,13 @@ void Printer(List<int>::Iterator marker,List<int> l){
     if(walker.is_null()){
 
     }
-
     while (!walker.is_null()){
         if(walker==marker||marker==NULL||marker==l.Begin()){
             cout<<"{"<<*walker<<"} ";
             ++walker;
         }else{
             cout<<"["<<*walker<<"] ";          //print this node
-            ++ walker;
+            ++walker;
         }
     }
     cout<<" ->|||\n";
@@ -87,5 +86,4 @@ void TestFun(){
         }
         Printer(marker,l);
     }while(ans!='x');
-
 }

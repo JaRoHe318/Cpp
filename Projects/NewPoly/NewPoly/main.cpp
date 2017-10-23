@@ -1,10 +1,11 @@
 #include <iostream>
 using namespace std;
 
-#include "sortlist.h";
+#include "sortlist.h"
+#include "poly.h"
 
-int main()
-{
+int main(){
+
     cout << "Hello World!" << endl;
     return 0;
 }

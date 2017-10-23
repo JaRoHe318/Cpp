@@ -35,7 +35,7 @@ void Printer(List<int>::Iterator marker,List<int> l){
             ++walker;
         }else{
             cout<<"["<<*walker<<"] ";          //print this node
-            ++ walker;
+            ++walker;
         }
     }
     cout<<" ->|||\n";
@@ -86,5 +86,4 @@ void TestFun(){
         }
         Printer(marker,l);
     }while(ans!='x');
-
 }
