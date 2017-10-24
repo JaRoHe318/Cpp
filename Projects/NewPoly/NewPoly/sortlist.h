@@ -1,7 +1,6 @@
 #ifndef SORTLIST_H
 #define SORTLIST_H
 
-
 #include "listfunctions.h"
 #include "node.h"
 
@@ -194,8 +193,11 @@ typename List<T>::Iterator List<T>::Prev(Iterator iMarker){
 
 template <class T>
 T& List<T>::operator[](int index){
-    T inside;
-    return inside;
+    List<T>::Iterator it = head;
+    for(int i = 0;i<=index;++i){
+    ++it;
+    }
+    return *it;
 }
 
 template <class T>

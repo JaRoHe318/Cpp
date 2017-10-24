@@ -1,115 +1,218 @@
 #ifndef LIST_H
 #define LIST_H
 
-using namespace std;
-#include <iostream>
-#include <assert.h>
-#include "functs.h"
-
+#include "functions.h"
+#include "node.h"
 
 template <class T>
 class List{
-
 public:
-        class Iterator{
-        //the nested class
-        public:
-            friend class List;                  //this will allow List
-                                                //  to access the private
-                                                //  members of Iterator
 
-            Iterator(T* p = NULL):_ptr(p){
+    class Iterator{
+    public:
+        //give access to list to access _ptr
+        friend class List;
 
-            }     //ctor
-            T& operator *(){                    //dereference oprator
-                assert(_ptr);
-                return *_ptr;
-            }
+        //default ctor
+        Iterator();
 
-            friend Iterator operator ++(Iterator& it,       //it++
-                                        int unused){
-                Iterator hold;
-                hold = it;
-                it._ptr++;
-                return hold;
-            }
-            Iterator& operator ++(){                        //++it
-                _ptr++;
-                return *this;
-            }
+        //Point Iterator to where p is pointing to
+        Iterator(node<T>* p=NULL):_ptr(p){
 
-            friend bool operator !=(const Iterator& left,   //it != it
-                                    const Iterator& right){
-                return left._ptr != right._ptr;
-            }
+        }
 
-        private:
-            T* _ptr;                    //pointer being
-                                        //  encapsulated
-        };
+        //dereference operator
+        T& operator *(){
+            return _ptr->_item;
+        }
 
-    List(T* array, int size);       //List ctor
-    //---------------------------- big three -----------------------------------
+
+        //member access operator
+        T* operator ->(){
+            return &(_ptr->_item);
+        }
+
+        //true if _ptr is NULL
+        bool is_null(){
+            return _ptr == NULL;
+        }
+
+        //true if left != right
+        friend bool operator !=(const Iterator& left,
+                                const Iterator& right){
+            return (left._ptr!=right._ptr);
+        }
+
+        //true if left == right
+        friend bool operator ==(const Iterator& left,
+                                const Iterator& right){
+            return (left._ptr==right._ptr);
+        }
+
+        //member operator: ++it; or ++it = new_value
+        Iterator& operator++(){
+            _ptr=_ptr->_next;
+            return *this;
+        }
+
+        //friend operator: it++
+        friend Iterator operator++(Iterator& it,
+                                   int unused){
+            List<T>::Iterator hold=it;
+//            hold = it;
+
+            it=it._ptr->_next;
+            return hold;
+        }
+
+    private:
+        //pointer being encapsulated
+        node<T>* _ptr;
+    };
+    List();
+
+    //Big Three
     ~List();
-    List(const List& other);
-    List& operator =(const List& RHS);
-    //---------------------------------------------------------------------------
-    Iterator Begin() const;         //an iterator to the start of List
-    Iterator End() const;           //an iterator to the end of List
+    List(const List<T> &copyThis);
+    List& operator =(const List<T> &RHS);
 
+    Iterator InsertHead(T i);           //inset i at the head of list
+
+    Iterator InsertAfter(T i, Iterator iMarker);  //insert i after iMarker
+
+    Iterator InsertRandom(Iterator iMarker);
+
+    Iterator InsertBefore(T i, Iterator iMarker); //insert i before iMarker
+
+    Iterator InsertSorted(T i);         //insert i. Assume sorted list
+
+    Iterator Delete(Iterator iMarker);         //delete node pointed to by iMarker
+
+    void Print() const;
+
+    Iterator Search(const T &key);
+
+    Iterator Next(Iterator iMarker);
+
+    Iterator Prev(Iterator iMarker);    //get the previous node to iMarker
+
+    T& operator[](int index);                   //return the item at index
+
+    Iterator Begin() const;                     //return the head of the list
+
+    Iterator End() const;                       //return the tail of the list
+
+    template <class U>
+    friend ostream& operator <<(ostream& outs, const List<U>& l); //insertion operator for list
 
 private:
-//    T* copy_array(T* src, int size);
-//    void destroy_array(T* &src);
-
-    T* _a_list;                     //the List raw data
-    int _how_many;                  //size of List
+    node<T>* head;
+    bool _order;
+    bool _unique;
 };
 
-//=========================================================================
 
 template <class T>
-List<T>::List(T* array, int size){
-    _a_list = copy_array(array, size);
-    _how_many = size;
+List<T>::List(){
+    head = NULL;
 }
-//---- BIG THREE --------------------------------
+
+template <class T>
+List<T>::List(const List<T> &copyThis){
+    head=_copyList(copyThis.head);
+}
+
+template <class T>
+List<T>& List<T>::operator =(const List<T>& RHS){
+    if(this==&RHS){
+        return *this;
+    }
+    _deleteAll(head);
+    head=_copyList(RHS.head);
+}
+
 template <class T>
 List<T>::~List(){
-//    destroy_array(_a_list);
+    _deleteAll(head);
 }
 
 template <class T>
-List<T>::List(const List& other){
-    _a_list = copy_array(other._a_list, other._how_many);
-    _how_many = other._how_many;
+typename List<T>::Iterator List<T>::InsertHead(T i){
+    return Iterator(_insert_head(head, i));
+}
+
+template <class T>
+typename List<T>::Iterator List<T>::InsertAfter(T i, Iterator iMarker){
+    return Iterator(_insertAfter(head, iMarker._ptr,i));
+}
+
+template <class T>
+typename List<T>::Iterator List<T>::InsertRandom(Iterator iMarker){
+    return Iterator(_insertRand(head,iMarker._ptr));
+}
+
+template <class T>
+typename List<T>::Iterator List<T>::InsertBefore(T i, Iterator iMarker){
 
 }
 
 template <class T>
-List<T>& List<T>::operator =(const List& RHS){
-    if (this == &RHS) return *this;
-    destroy_array(_a_list);
-    _a_list = copy_array(RHS._a_list, RHS._how_many);
-    _how_many = RHS._how_many;
+typename List<T>::Iterator List<T>::InsertSorted(T i){
+    return Iterator(_InsertSorted(head,i,_order));
 }
-//-----------------------------------------------------
 
+template <class T>
+typename List<T>::Iterator List<T>::Delete(Iterator iMarker){
+    _deleteNode(head,iMarker);
+}
 
+template<class T>
+void List<T>::Print()const {
+    _print_list(cout, head);
+}
+
+template <class T>
+typename List<T>::Iterator List<T>::Next(Iterator iMarker){
+    if(iMarker.is_null()){
+        return ++iMarker;
+    }else{
+        return ++iMarker;
+    }
+}
+
+template <class T>
+typename List<T>::Iterator List<T>::Search(const T& item){
+    return Iterator(_search_list(head, item));
+}
+
+template <class T>
+typename List<T>::Iterator List<T>::Prev(Iterator iMarker){
+    return Iterator(_previousNode(head,iMarker._ptr));
+}
+
+template <class T>
+T& List<T>::operator[](int index){
+    List<T>::Iterator it = head;
+    for(int i = 0;i<=index;++i){
+    ++it;
+    }
+    return *it;
+}
 
 template <class T>
 typename List<T>::Iterator List<T>::Begin() const{
-    //C++ requires you to use the keyword typename when referring to the Iterator outside
-    //      the class declaration
-    return Iterator(_a_list);
+    return Iterator(head);
 }
 
 template <class T>
 typename List<T>::Iterator List<T>::End() const{
-    //probably a terrible idea!
-    return Iterator(_a_list+_how_many);
+    return Iterator(_lastNode(head));
 }
 
+template<class U>
+ostream& operator <<(ostream& outs,const List<U>& l){
+    return _print_list(outs, l.head);
+}
 
 
 #endif // LIST_H

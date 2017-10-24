@@ -76,10 +76,9 @@ Term operator -(const Term& lhs, const Term& rhs){
     return (Term(coef,lhs._exp));
 }
 
-istream& operator >>(istream& ins, Term& t){
-    char var;
+istream& operator >>(istream& ins, Term& t){ 
+    char var;//var == 'x'
     ins>>t._coef>>var>>t._exp; //needs a space between _coef and var
-
     return ins;
 }
 

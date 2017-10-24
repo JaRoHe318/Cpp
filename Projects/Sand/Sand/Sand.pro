@@ -5,4 +5,7 @@ CONFIG -= qt
 
 SOURCES += main.cpp
 
-HEADERS +=
+HEADERS += \
+    node.h \
+    functions.h \
+    list.h

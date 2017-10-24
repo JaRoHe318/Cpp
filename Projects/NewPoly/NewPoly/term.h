@@ -3,6 +3,8 @@
 #include <iostream>
 using namespace std;
 
+#include "sortlist.h"
+
 //class Term{
 //public:
 //    Term();

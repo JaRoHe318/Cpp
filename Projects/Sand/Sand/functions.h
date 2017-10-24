@@ -1,5 +1,6 @@
-#ifndef LISTFUNCTIONS_H
-#define LISTFUNCTIONS_H
+#ifndef FUNCTIONS_H
+#define FUNCTIONS_H
+
 
 using namespace std;
 
@@ -50,15 +51,18 @@ node<T>* _insertAfter(node<T>* &head, node<T>* afterThis ,const T &insertThis){
 }
 
 template<class T>
-node<T>* _insertRand(node<T>* &head,node<T>* afterThis,bool ascending=true){
+node<T>* _insertRand(node<T>* &head,node<T>* afterThis){
     int ran=rand() % 100 + 1;
-//    return _insertAfter(head, afterThis, ran);
-    return _InsertSorted(head,ran,ascending);
+    return _insertAfter(head, afterThis, ran);
 }
 
 template<class T>
 node<T>* _insertBefore(node<T>* &head,node<T>* beforeThis ,const T &insertThis){
+    if(beforeThis==NULL){
+        return _insert_head(head,insertThis);
+    }else{
 
+    }
 }
 
 template<class T>
@@ -140,17 +144,29 @@ void _deleteAll(node<T>* &head){
 template <typename T>//insert
 node<T>* _InsertSorted(node<T>* &head, T item, bool ascending=true){
     node<T>* w = head;
+    node<T>* s=NULL;
     node<T>* newSort = NULL;
 
     if(w==NULL){
         newSort=_insert_head(head,item);
+        w=newSort;
     }else{
-        while(!(w->_next==NULL)){
+        while(w!=NULL){
+            cout<<"|";
 
-            ++w;
+            s=w;
+            w=w->_next;
+
+            if(item<=s->_item){
+                cout<<"+";
+              _insert_head(newSort,item);
+            }else if((w==NULL&&(s->_item<=item))||(s->_item<item&&(w->_item>=item))){
+                _insertAfter(newSort,s,item);
+            }
         }
 
     }
+    return newSort;
 }
 
 template <typename T>//insert or add if a dup
@@ -165,4 +181,5 @@ node<T>* WhereThisGoes(node<T>* head, T item,bool ascending=true){
 
 }
 
-#endif // LISTFUNCTIONS_H
+
+#endif // FUNCTIONS_H
