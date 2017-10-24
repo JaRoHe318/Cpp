@@ -21,6 +21,8 @@ struct Term{
     friend bool operator !=(const Term& lhs, const Term& rhs);
     friend bool operator >(const Term& lhs, const Term& rhs);
     friend bool operator <(const Term& lhs, const Term& rhs);
+    friend bool operator <=(const Term& lhs, const Term& rhs);
+    friend bool operator >=(const Term& lhs, const Term& rhs);
 
     //used in Poly division operator
     friend Term operator / (const Term& lhs, const Term& rhs);

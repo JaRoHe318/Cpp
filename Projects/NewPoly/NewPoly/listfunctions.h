@@ -130,10 +130,6 @@ node<T>* _lastNode(node<T>* head){
 template <class T>
 void _deleteAll(node<T>* &head){
     node<T>* walker = head;
-<<<<<<< HEAD
-=======
-
->>>>>>> dc6446054ada9aa6f542b181b10c4b003279c7a3
     while (walker!=NULL){
         _deleteNode(head, walker);
         walker = walker->_next;
@@ -143,19 +139,25 @@ void _deleteAll(node<T>* &head){
 template <typename T>//insert
 node<T>* _InsertSorted(node<T>* &head, T item, bool ascending=true){
     node<T>* w = head;
-    node<T>* newSort = NULL;
+    node<T>* s=NULL;
+    node<T>* isHere = NULL;
 
     if(w==NULL){
-        newSort=_insert_head(head,item);
+        isHere=_insert_head(head,item);
+        w=head;
     }else{
-        while(!(w->_next==NULL)){
-
-            ++w;
+        while(w!=NULL){
+            s=w;
+            w=w->_next;
+            if(s==head&&item<=s->_item){
+              isHere=_insert_head(head,item);
+            }else if((w==NULL&&(s->_item<=item))||(s->_item<item&&(w->_item>=item))){
+                isHere=_insertAfter(head,s,item);
+            }
         }
-
     }
+    return isHere;
 }
-
 template <typename T>//insert or add if a dup
 node<T>* InsertSorted_and_add(node<T>* &head, T item, bool ascending=true){
 

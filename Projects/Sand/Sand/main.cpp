@@ -5,12 +5,13 @@ using namespace std;
 void Printer(List<int>::Iterator marker,List<int> l);
 
 int main(){
+    cout<<"\n\n\n\n\n===========================================================\n\n";
 
     List<int> l;
     List<int>::Iterator it=l.Begin();
 
     for(int i=0;i<10;i=i+4){
-        it=l.InsertAfter(i,it);
+//        it=l.InsertAfter(i,it);
 //       it=l.InsertRandom(it);
     }
     cout<<l;
@@ -21,7 +22,7 @@ int main(){
     it=l.InsertSorted(sortA);
     it=l.InsertSorted(sortB);
 
-    cout<<endl<<l<<endl;
+//    cout<<endl<<l<<endl;
     Printer(it,l);
 
 
@@ -33,12 +34,9 @@ void Printer(List<int>::Iterator marker,List<int> l){
 
     cout<<"H-> ";
 
-    if(walker.is_null()){
-
-    }
 
     while (!walker.is_null()){
-        if(walker==marker||marker==NULL||marker==l.Begin()){
+        if(marker==NULL||walker==marker||marker==l.Begin()){
             cout<<"{"<<*walker<<"} ";
             ++walker;
         }else{

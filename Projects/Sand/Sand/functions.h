@@ -145,28 +145,27 @@ template <typename T>//insert
 node<T>* _InsertSorted(node<T>* &head, T item, bool ascending=true){
     node<T>* w = head;
     node<T>* s=NULL;
-    node<T>* newSort = NULL;
+    node<T>* isHere = NULL;
 
     if(w==NULL){
-        newSort=_insert_head(head,item);
-        w=newSort;
-    }else{
+        isHere=_insert_head(head,item);
+        w=head;
+    }else if(ascending){
         while(w!=NULL){
             cout<<"|";
 
             s=w;
             w=w->_next;
 
-            if(item<=s->_item){
-                cout<<"+";
-              _insert_head(newSort,item);
+            if(s==head&&item<=s->_item){
+              isHere=_insert_head(head,item);
             }else if((w==NULL&&(s->_item<=item))||(s->_item<item&&(w->_item>=item))){
-                _insertAfter(newSort,s,item);
+                isHere=_insertAfter(head,s,item);
             }
         }
 
     }
-    return newSort;
+    return isHere;
 }
 
 template <typename T>//insert or add if a dup

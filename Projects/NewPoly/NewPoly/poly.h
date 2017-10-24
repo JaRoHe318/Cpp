@@ -4,19 +4,12 @@
 #include "term.h"
 #include "sortlist.h"
 
-//class Poly{
-//public:
-//    Poly();
-//};
-
 class Poly{
 
 public:
 
     Poly();
     Poly(double term_array[], int order);//was int termarray[]?
-
-    //big three?
 
     //High lvl=================================================
 
@@ -27,7 +20,6 @@ public:
     friend Poly operator * (const Poly& left, const Poly& right);
     friend Poly operator -(const Poly& left, const Poly& right);
     friend istream& operator >>(istream& ins, Poly& p);
-    // friend istream& operator >> (istream& outs, Poly& print_me);
 
     friend Poly operator + (const Poly& left, const Poly& right);
     friend ostream& operator << (ostream& outs, const Poly& print_me);
@@ -53,7 +45,7 @@ public:
     Poly& operator -=(const Poly& RHS);
 private:
     List<Term> _poly; //descending sorted list
-    int _order;
+    int _order=0;
 
 };
 

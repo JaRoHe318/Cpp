@@ -102,8 +102,8 @@ public:
 
 private:
     node<T>* head;
-    bool _order;
-    bool _unique;
+    bool _order=true;
+    bool _unique=true;
 };
 
 
@@ -140,7 +140,7 @@ typename List<T>::Iterator List<T>::InsertRandom(Iterator iMarker){
 
 template <class T>
 typename List<T>::Iterator List<T>::InsertSorted(T i){
-    return Iterator(InsertSorted(head,i,_order));
+    return Iterator(_InsertSorted(head,i,_order));
 }
 
 template <class T>

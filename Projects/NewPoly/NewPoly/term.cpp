@@ -1,9 +1,5 @@
 #include "term.h"
 
-//Term::Term(){
-
-//}
-
 Term::Term(){
     _coef=0;
     _exp=0;
@@ -15,36 +11,27 @@ Term::Term(double coef, int order){
 }
 
 bool operator ==(const Term& lhs, const Term& rhs){
-    if(lhs._coef!=rhs._coef||lhs._exp!=rhs._exp){
-        return false;
-
-    }else{
-        return true;
-    }
+    return lhs._exp==rhs._exp;
 }
 
 bool operator !=(const Term& lhs, const Term& rhs){
-    if(lhs._coef==rhs._coef&&lhs._exp==rhs._exp){
-        return false;
-    }else{
-        return true;
-    }
+    return lhs._exp!=rhs._exp;
 }
 
 bool operator >(const Term& lhs, const Term& rhs){
-    if(lhs._exp>rhs._exp){
-        return true;
-    } else{
-        return false;
-    }
+    return lhs._exp>rhs._exp;
+}
+
+bool operator >=(const Term& lhs, const Term& rhs){
+    return lhs._exp>=rhs._exp;
 }
 
 bool operator <(const Term& lhs, const Term& rhs){
-    if(lhs._exp<rhs._exp){
-        return true;
-    } else{
-        return false;
-    }
+    return lhs._exp<rhs._exp;
+}
+
+bool operator <=(const Term& lhs, const Term& rhs){
+    return lhs._exp<=rhs._exp;
 }
 
 //used in Poly division operator
@@ -55,7 +42,6 @@ Term operator / (const Term& lhs, const Term& rhs){
 }
 
 Term operator +(const Term& lhs, const Term& rhs){
-//    assert(lhs._exp==rhs._exp);
     double coef=lhs._coef+rhs._coef;
     return (Term(coef,lhs._exp));
 }
@@ -71,7 +57,6 @@ Term operator -(const Term& t){
 }
 
 Term operator -(const Term& lhs, const Term& rhs){
-//    assert(lhs._exp==rhs._exp);
     double coef=lhs._coef-rhs._coef;
     return (Term(coef,lhs._exp));
 }
