@@ -40,8 +40,8 @@ public:
 //    const Term& operator [](const int exp) const;
 //    Term& operator [](const int exp);
 
-    friend Poly operator + (const Poly& left, const Term& t);
-    friend Poly operator * (const Poly& left, const Term& t);
+    friend Poly operator +(const Poly& left, const Term& t);
+    friend Poly operator *(const Poly& left, const Term& t);
 
 
 

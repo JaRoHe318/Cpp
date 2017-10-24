@@ -77,13 +77,7 @@ public:
     List(const List<T> &copyThis);
     List& operator =(const List<T> &RHS);
 
-    Iterator InsertHead(T i);           //inset i at the head of list
-
-    Iterator InsertAfter(T i, Iterator iMarker);  //insert i after iMarker
-
     Iterator InsertRandom(Iterator iMarker);
-
-    Iterator InsertBefore(T i, Iterator iMarker); //insert i before iMarker
 
     Iterator InsertSorted(T i);         //insert i. Assume sorted list
 
@@ -137,25 +131,12 @@ List<T>::~List(){
     _deleteAll(head);
 }
 
-template <class T>
-typename List<T>::Iterator List<T>::InsertHead(T i){
-    return Iterator(_insert_head(head, i));
-}
-
-template <class T>
-typename List<T>::Iterator List<T>::InsertAfter(T i, Iterator iMarker){
-    return Iterator(_insertAfter(head, iMarker._ptr,i));
-}
 
 template <class T>
 typename List<T>::Iterator List<T>::InsertRandom(Iterator iMarker){
-    return Iterator(_insertRand(head,iMarker._ptr,_order));
+    return Iterator(_insertRand(head,iMarker._ptr));
 }
 
-template <class T>
-typename List<T>::Iterator List<T>::InsertBefore(T i, Iterator iMarker){
-
-}
 
 template <class T>
 typename List<T>::Iterator List<T>::InsertSorted(T i){

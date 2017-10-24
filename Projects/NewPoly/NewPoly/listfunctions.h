@@ -50,10 +50,9 @@ node<T>* _insertAfter(node<T>* &head, node<T>* afterThis ,const T &insertThis){
 }
 
 template<class T>
-node<T>* _insertRand(node<T>* &head,node<T>* afterThis,bool ascending=true){
+node<T>* _insertRand(node<T>* &head,node<T>* afterThis){
     int ran=rand() % 100 + 1;
-//    return _insertAfter(head, afterThis, ran);
-    return _InsertSorted(head,ran,ascending);
+    return _insertAfter(head, afterThis, ran);
 }
 
 template<class T>
@@ -131,6 +130,10 @@ node<T>* _lastNode(node<T>* head){
 template <class T>
 void _deleteAll(node<T>* &head){
     node<T>* walker = head;
+<<<<<<< HEAD
+=======
+
+>>>>>>> dc6446054ada9aa6f542b181b10c4b003279c7a3
     while (walker!=NULL){
         _deleteNode(head, walker);
         walker = walker->_next;
