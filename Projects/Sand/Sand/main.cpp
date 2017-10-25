@@ -1,48 +1,23 @@
 using namespace std;
 #include <iostream>
-#include "list.h"
 
-void Printer(List<int>::Iterator marker,List<int> l);
+#include <vector>
 
 int main(){
     cout<<"\n\n\n\n\n===========================================================\n\n";
 
-    List<int> l;
-    List<int>::Iterator it=l.Begin();
+    vector<int> n;
 
-    for(int i=0;i<10;i=i+4){
-//        it=l.InsertAfter(i,it);
-//       it=l.InsertRandom(it);
+    for(int i=0;i<10;i+=2){
+        n.push_back(i);
     }
-    cout<<l;
 
-    int sortA = 0;
-    int sortB = 0;
+    for(vector<int>::iterator i = n.begin();i<n.end();++i){
+        cout<<*i;
+    }
 
-    it=l.InsertSorted(sortA);
-    it=l.InsertSorted(sortB);
+    int got = n.
 
-//    cout<<endl<<l<<endl;
-    Printer(it,l);
-
-
+    cout<<"\n\n\n\n\n===========================================================\n\n";
     return 0;
-}
-
-void Printer(List<int>::Iterator marker,List<int> l){
-    List<int>::Iterator walker = l.Begin();
-
-    cout<<"H-> ";
-
-
-    while (!walker.is_null()){
-        if(marker==NULL||walker==marker||marker==l.Begin()){
-            cout<<"{"<<*walker<<"} ";
-            ++walker;
-        }else{
-            cout<<"["<<*walker<<"] ";          //print this node
-            ++ walker;
-        }
-    }
-    cout<<" ->|||\n";
 }
