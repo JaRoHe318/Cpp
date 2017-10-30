@@ -7,7 +7,6 @@
 template <class T>
 class List{
 public:
-
     class Iterator{
     public:
         //give access to list to access _ptr
@@ -69,6 +68,7 @@ public:
         //pointer being encapsulated
         node<T>* _ptr;
     };
+
     List();
 
     //Big Three

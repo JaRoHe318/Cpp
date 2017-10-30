@@ -6,6 +6,6 @@ CONFIG -= qt
 SOURCES += main.cpp
 
 HEADERS += \
-    node.h \
     functions.h \
-    list.h
+    list.h \
+    jvector.h

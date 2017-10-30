@@ -2,21 +2,21 @@ using namespace std;
 #include <iostream>
 
 #include <vector>
+#include <jvector.h>
 
 int main(){
     cout<<"\n\n\n\n\n===========================================================\n\n";
 
-    vector<int> n;
+    int* temp = new int[15];
 
-    for(int i=0;i<10;i+=2){
-        n.push_back(i);
+    for(int i = 0;i<10;i++){
+        temp[i]=0;
     }
 
-    for(vector<int>::iterator i = n.begin();i<n.end();++i){
-        cout<<*i;
+    for(int i=0;i<10;++i){
+        cout<<temp[i]<<" ";
     }
 
-    int got = n.
 
     cout<<"\n\n\n\n\n===========================================================\n\n";
     return 0;
