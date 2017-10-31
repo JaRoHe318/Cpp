@@ -1,15 +1,17 @@
 using namespace std;
 #include <iostream>
-#include "list.h"
 
-void Printer(List<int>::Iterator marker,List<int> l);
+#include <vector>
+#include "jvector.h"
+#include "vfunctions.h"
 
 int main(){
     cout<<"\n\n\n\n\n===========================================================\n\n";
+    JVector<int> newVArray(10,0);
 
-    List<int> l;
-    List<int>::Iterator it=l.Begin();
+    int* temp = new int[15];
 
+<<<<<<< HEAD
     for(int i=10;i>=0;i=i-4){
         it=l.InsertAfter(i,it);
 //       it=l.InsertRandom(it);
@@ -18,31 +20,23 @@ int main(){
 
     int sortA = 5;
     int sortB = 0;
+=======
+//    for(int i = 0;i<11;i++){
+//        temp[i]=0;
+//    }
 
-    it=l.InsertSorted(sortA);
-    it=l.InsertSorted(sortB);
+    newVArray[2]=4;
+    cout<<newVArray;
+>>>>>>> 8d13af07594e0542d00469f17571f1797b318260
 
+
+<<<<<<< HEAD
     cout<<endl<<l<<endl;
 //    Printer(it,l);
+=======
+>>>>>>> 8d13af07594e0542d00469f17571f1797b318260
 
 
+    cout<<"\n\n\n\n\n===========================================================\n\n";
     return 0;
-}
-
-void Printer(List<int>::Iterator marker,List<int> l){
-    List<int>::Iterator walker = l.Begin();
-
-    cout<<"H-> ";
-
-
-    while (!walker.is_null()){
-        if(marker==NULL||walker==marker||marker==l.Begin()){
-            cout<<"{"<<*walker<<"} ";
-            ++walker;
-        }else{
-            cout<<"["<<*walker<<"] ";          //print this node
-            ++ walker;
-        }
-    }
-    cout<<" ->|||\n";
 }
