@@ -10,20 +10,20 @@ int main(){
     List<int> l;
     List<int>::Iterator it=l.Begin();
 
-    for(int i=0;i<10;i=i+4){
-//        it=l.InsertAfter(i,it);
+    for(int i=10;i>=0;i=i-4){
+        it=l.InsertAfter(i,it);
 //       it=l.InsertRandom(it);
     }
     cout<<l;
 
-    int sortA = 0;
+    int sortA = 5;
     int sortB = 0;
 
     it=l.InsertSorted(sortA);
     it=l.InsertSorted(sortB);
 
-//    cout<<endl<<l<<endl;
-    Printer(it,l);
+    cout<<endl<<l<<endl;
+//    Printer(it,l);
 
 
     return 0;

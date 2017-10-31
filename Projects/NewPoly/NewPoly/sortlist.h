@@ -10,49 +10,39 @@ public:
 
     class Iterator{
     public:
-        //give access to list to access _ptr
+
         friend class List;
 
-        //default ctor
         Iterator();
 
-        //Point Iterator to where p is pointing to
         Iterator(node<T>* p=NULL):_ptr(p){
 
         }
 
-        //dereference operator
         T& operator *(){
             return _ptr->_item;
         }
 
-
-        //member access operator
         T* operator ->(){
             return &(_ptr->_item);
         }
 
-        //true if _ptr is NULL
         bool is_null(){
             return _ptr == NULL;
         }
 
-        //true if left != right
         friend bool operator !=(const Iterator& left,
                                 const Iterator& right){
             return (left._ptr!=right._ptr);
         }
 
-        //true if left == right
         friend bool operator ==(const Iterator& left,
                                 const Iterator& right){
             return (left._ptr==right._ptr);
         }
 
-        //member operator: ++it; or ++it = new_value
         Iterator& operator++(){
             _ptr=_ptr->_next;
-            //            return _ptr->_item;
             return *this;
         }
 
@@ -60,14 +50,11 @@ public:
         friend Iterator operator++(Iterator& it,
                                    int unused){
             List<T>::Iterator hold=it;
-//            hold = it;
-
             it=it._ptr->_next;
             return hold;
         }
 
     private:
-        //pointer being encapsulated
         node<T>* _ptr;
     };
     List();
@@ -79,9 +66,9 @@ public:
 
     Iterator InsertRandom(Iterator iMarker);
 
-    Iterator InsertSorted(T i);         //insert i. Assume sorted list
+    Iterator InsertSorted(T i);
 
-    Iterator Delete(Iterator iMarker);         //delete node pointed to by iMarker
+    Iterator Delete(Iterator iMarker);
 
     void Print() const;
 
@@ -89,20 +76,19 @@ public:
 
     Iterator Next(Iterator iMarker);
 
-    Iterator Prev(Iterator iMarker);    //get the previous node to iMarker
+    Iterator Prev(Iterator iMarker);
+    T& operator[](int index);
 
-    T& operator[](int index);                   //return the item at index
+    Iterator Begin() const;
 
-    Iterator Begin() const;                     //return the head of the list
-
-    Iterator End() const;                       //return the tail of the list
+    Iterator End() const;
 
     template <class U>
     friend ostream& operator <<(ostream& outs, const List<U>& l); //insertion operator for list
 
 private:
     node<T>* head;
-    bool _order=true;
+    bool _order=false;
     bool _unique=true;
 };
 

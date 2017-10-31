@@ -20,7 +20,6 @@ node<T>::node(T item):_item(item), _next(NULL){
 }
 template <class U>
 ostream& operator <<(ostream& outs, const node<U>& print_me){
-//    outs<<"["<<print_me._item<<"]->";
     outs<<print_me._item;
     return outs;
 }

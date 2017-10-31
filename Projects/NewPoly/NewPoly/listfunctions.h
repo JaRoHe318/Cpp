@@ -9,12 +9,12 @@ using namespace std;
 template<class U>
 ostream& _print_list(ostream &outs, node<U>* head_ptr){
     node<U>* walker = head_ptr;
-    outs<<"H-> ";
+    outs<<"";
     while (walker!=NULL){
         outs<<*walker;
         walker = walker->_next;
     }
-    outs<<" ->|||"<<endl;
+    outs<<""<<endl;
     return outs;
 }
 
@@ -104,11 +104,11 @@ node<T>* _copyList(node<T>* head){
         copyPtr=copy;
         w=w->_next;
     }else{
-    while(w!=NULL){
-        tempItem = w->_item;
-        _insertAfter(copy,w,tempItem);
-        w=w->_next;
-    }
+        while(w!=NULL){
+            tempItem = w->_item;
+            _insertAfter(copy,w,tempItem);
+            w=w->_next;
+        }
     }
     return copyPtr;
 }
@@ -137,27 +137,53 @@ void _deleteAll(node<T>* &head){
 }
 
 template <typename T>//insert
-node<T>* _InsertSorted(node<T>* &head, T item, bool ascending=true){
+node<T>* _InsertSorted(node<T>* &head, T item, bool ascending){
     node<T>* w = head;
     node<T>* s=NULL;
     node<T>* isHere = NULL;
 
-    if(w==NULL){
-        isHere=_insert_head(head,item);
-        w=head;
-    }else{
+
+    if(ascending){
+        if(w==NULL){
+            isHere=_insert_head(head,item);
+            w=head;
+        }
+        cout<<"-";
         while(w!=NULL){
             s=w;
             w=w->_next;
+
             if(s==head&&item<=s->_item){
-              isHere=_insert_head(head,item);
+                isHere=_insert_head(head,item);
             }else if((w==NULL&&(s->_item<=item))||(s->_item<item&&(w->_item>=item))){
                 isHere=_insertAfter(head,s,item);
             }
         }
-    }
-    return isHere;
-}
+        return isHere;
+    }//ascending
+
+    if(!ascending){//descend
+        if(w==NULL){
+            isHere=_insert_head(head,item);
+            w=head;
+        }else{
+            while(w!=NULL){
+                s=w;
+                w=w->_next;
+
+                if(s==head&&item>=s->_item){
+                    isHere=_insert_head(head,item);
+                }else if((w==NULL&&(s->_item>=item))||(s->_item>=item&&(w->_item<item))){
+                    isHere=_insertAfter(head,s,item);
+                }
+            }
+        }
+
+        return isHere;
+    }//descend
+}//InSort
+
+
 template <typename T>//insert or add if a dup
 node<T>* InsertSorted_and_add(node<T>* &head, T item, bool ascending=true){
 

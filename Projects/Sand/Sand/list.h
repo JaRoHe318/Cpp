@@ -107,7 +107,7 @@ public:
 
 private:
     node<T>* head;
-    bool _order;
+    bool _order=false;
     bool _unique;
 };
 

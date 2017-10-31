@@ -36,7 +36,6 @@ struct Term{
 
     friend ostream& operator <<(ostream& outs, const Term& t);
 
-    //NewShit
     Term& operator +=(const Term& rhs);
     Term& operator -=(const Term& rhs);
     Term& operator *=(const Term& rhs);
