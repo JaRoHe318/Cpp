@@ -96,7 +96,7 @@ public:
 
     Iterator Prev(Iterator iMarker);    //get the previous node to iMarker
 
-    T& operator[](int index);                   //return the item at index
+    friend T& operator[](int index);                   //return the item at index
 
     Iterator Begin() const;                     //return the head of the list
 

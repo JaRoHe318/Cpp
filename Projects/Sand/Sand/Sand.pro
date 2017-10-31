@@ -8,4 +8,5 @@ SOURCES += main.cpp
 HEADERS += \
     functions.h \
     list.h \
-    jvector.h
+    jvector.h \
+    vfunctions.h
