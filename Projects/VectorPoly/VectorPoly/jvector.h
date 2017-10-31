@@ -1,6 +1,7 @@
 #ifndef JVECTOR_H
 #define JVECTOR_H
 
+
 #include "vfunctions.h"
 
 template<class T>
@@ -16,7 +17,7 @@ public:
         Iterator();
 
         //Point Iterator to where p is pointing to
-        Iterator(JVector<T>* p=NULL):_ptr(p){
+        Iterator(T* p=NULL):_ptr(p){
         }
 
         //dereference operator
@@ -61,7 +62,7 @@ public:
 
     private:
         //pointer being encapsulated
-        JVector<T>* _ptr;
+        T* _ptr;
     };
 
     JVector();
