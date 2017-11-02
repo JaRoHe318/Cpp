@@ -21,7 +21,6 @@ public:
             return *_ptr;
         }
 
-
         T* operator ->(){
             return &(*_ptr);
         }
@@ -37,8 +36,6 @@ public:
         }
 
         Iterator& operator++(){
-            //            _ptr=_ptr->_next;
-
             ++_ptr;
             return *this;
         }
@@ -47,8 +44,17 @@ public:
             JVector<T>::Iterator hold=it;
             ++it;
             return hold;
-            //            it=it._ptr->_next;
-            //            return hold;
+        }
+
+        Iterator& operator--(){
+            --_ptr;
+            return *this;
+        }
+
+        friend Iterator operator--(Iterator& it, int unused){
+            JVector<T>::Iterator hold=it;
+            --it;
+            return hold;
         }
 
     private:

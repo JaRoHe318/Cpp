@@ -1,18 +1,30 @@
 #include <iostream>
 #include "jvector.h"
-//#include "list.h"
+#include "list.h"
 using namespace std;
-void print (const JVector<int>& v){
-    for(JVector<int>::Iterator it = v.Begin();it!=v.End();++it){
-        cout<<*it<<" ";
-    }
-    cout<<endl;
 
-}
+void testList();
+void testJVector();
+void print (const JVector<int>& v);
 
 int main(){
     cout<<"\n\n\n=================================================\n\n";
 
+//    testJVector();
+
+
+
+    cout<<"\n\n\n=================================================\n\n";
+    return 0;
+}
+
+void testList(){
+    List<int> test;
+
+    test.
+}
+
+void testJVector(){
     JVector<int> test;
 
     print(test);
@@ -28,8 +40,11 @@ int main(){
 
     test[8]=12;
     print(test);
+}
 
-
-    cout<<"\n\n\n=================================================\n\n";
-    return 0;
+void print (const JVector<int>& v){
+    for(JVector<int>::Iterator it = v.Begin();it!=v.End();it++){
+        cout<<*it<<" ";
+    }
+    cout<<endl;
 }
