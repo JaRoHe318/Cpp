@@ -10,40 +10,32 @@ public:
 
     class Iterator{
     public:
-        //give access to list to access _ptr
         friend class JVector;
 
-        //default ctor
         Iterator();
 
-        //Point Iterator to where p is pointing to
         Iterator(T* p=NULL):_ptr(p){
         }
 
-        //dereference operator
         T& operator *(){
             return *_ptr;
         }
 
 
-        //member access operator
         T* operator ->(){
             return &(*_ptr);
         }
 
-        //true if left != right
         friend bool operator !=(const Iterator& left,
                                 const Iterator& right){
             return (left._ptr!=right._ptr);
         }
 
-        //true if left == right
         friend bool operator ==(const Iterator& left,
                                 const Iterator& right){
             return (left._ptr==right._ptr);
         }
 
-        //member operator: ++it; or ++it = new_value
         Iterator& operator++(){
             //            _ptr=_ptr->_next;
 
@@ -51,7 +43,6 @@ public:
             return *this;
         }
 
-        //friend operator: it++
         friend Iterator operator++(Iterator& it, int unused){
             JVector<T>::Iterator hold=it;
             ++it;
@@ -61,20 +52,18 @@ public:
         }
 
     private:
-        //pointer being encapsulated
         T* _ptr;
     };
 
-    JVector();
+    JVector( );
     JVector(int size, T fullOfThis);
-
 
     //Big Twee
     ~JVector();
     JVector(const JVector<T> &copyThis);
     JVector& operator =(const JVector<T> &RHS);
 
-    T& operator[](int index)const;
+    T& operator[](int index);
 
     Iterator Begin() const;
 
@@ -91,12 +80,16 @@ public:
 private:
     T* v;
     int capacity;
+    int howMany;
 
 };
 
 template<class T>
-JVector<T>::JVector():capacity(100){
+JVector<T>::JVector(){
+    capacity=100;
+    howMany=0;
     v = new T[capacity];
+    Fill(v,0,capacity);
 }
 
 template<class T>
@@ -134,40 +127,43 @@ typename JVector<T>::Iterator JVector<T>::Begin()const{
 
 template<class T>
 typename JVector<T>::Iterator JVector<T>::End()const{
-    return Iterator(v+capacity);
+    return Iterator(v+howMany);
 }
 
 template<class T>
 void JVector<T>::PushBack(T pushThis){
-    T* temp = new T[capacity+1];
+//    T* temp = new T[capacity+1];
 
-    _copyArray(v,temp,capacity);
-    temp[capacity]=pushThis;
-    delete []v;
-    v=temp;
-    //    v[capacity]=pushThis;
-    ++capacity;
+//    _copyArray(v,temp,capacity);
+    v[howMany]=pushThis;
+//    delete []v;
+//    v=temp;
+//    ++capacity;
+    ++howMany;
 }
 
 template<class T>
 void JVector<T>::PopBack(){
-    T* temp = new T[capacity-1];
+//    T* temp = new T[capacity-1];
+//    _copyArray(v,temp,capacity-1);
+//    delete []v;
+//    v=temp;
+//    --capacity;
 
-    _copyArray(v,temp,capacity-1);
-    delete []v;
-    v=temp;
-    //    v[capacity]=pushThis;
-    --capacity;
+    --howMany;
 }
 
 template<class T>
-T& JVector<T>::operator[](int index)const{
+T& JVector<T>::operator[](int index){
+    if(index>howMany){
+        howMany=index+1;
+    }
     return v[index];
 }
 
 template<class U>
 ostream& operator <<(ostream& outs,const JVector<U>& j){
-    for(int i=0;i<j.capacity;++i){
+    for(int i=0;i<j.howMany;++i){
         outs<<j[i]<<" ";
     }
     return outs;

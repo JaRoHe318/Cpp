@@ -17,7 +17,7 @@ public:
         }
     private:
         JVector<T>* _ptr;
-        int pos;
+        int pos;//how far am I from begin
 
     };//Iterator
 
