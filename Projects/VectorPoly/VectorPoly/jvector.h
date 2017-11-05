@@ -12,7 +12,9 @@ public:
     public:
         friend class JVector;
 
-        Iterator();
+//        Iterator(){
+
+//        }
 
         Iterator(T* p=NULL):_ptr(p){
         }
