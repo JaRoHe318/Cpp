@@ -2,7 +2,13 @@
 
 animate::animate(){
     window.create(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Multiple balls!");
-    system = System();
+
+    JVector<Particle> p(100,Particle());
+
+    system = System(p);
+
+
+
     window.setFramerateLimit(80);
 }
 

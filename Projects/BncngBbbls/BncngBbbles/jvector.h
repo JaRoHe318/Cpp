@@ -96,7 +96,7 @@ JVector<T>::JVector(){
     capacity=100;
     howMany=0;
     v = new T[capacity];
-    Fill(v,0,capacity);
+//    Fill(v,0,capacity);
 }
 
 template<class T>

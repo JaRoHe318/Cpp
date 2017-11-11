@@ -3,8 +3,11 @@
 
 #include <iostream>
 using namespace std;
+
 #include <SFML/Graphics.hpp>
 #include "system.h"
+#include "jvector.h"
+#include "particle.h"
 
 class animate{
 public:
@@ -18,9 +21,6 @@ public:
 private:
     sf::RenderWindow window;
     System system;                      //container for all the animated objects
-
-    const float SCREEN_WIDTH = 400;
-    const float SCREEN_HEIGHT = 400;
 };
 
 #endif // ANIMATE_H

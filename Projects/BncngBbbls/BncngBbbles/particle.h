@@ -2,9 +2,8 @@
 #define PARTICLE_H
 
 #include "random.h"
+#include "constants.h"
 #include <SFML/Graphics.hpp>
-
-
 
 class Particle{
 public:
@@ -14,8 +13,7 @@ public:
 private:
     sf::CircleShape shape;
     sf::Vector2f vel;
-    const float SCREEN_WIDTH = 400;
-    const float SCREEN_HEIGHT = 400;
+
 };
 
 #endif // PARTICLE_H

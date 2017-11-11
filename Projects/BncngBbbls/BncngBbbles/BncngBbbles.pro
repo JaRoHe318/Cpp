@@ -26,4 +26,5 @@ HEADERS += \
     random.h \
     particle.h \
     jvector.h \
-    vfunctions.h
+    vfunctions.h \
+    constants.h
