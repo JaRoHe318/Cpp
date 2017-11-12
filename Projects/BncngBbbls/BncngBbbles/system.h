@@ -9,7 +9,11 @@ class System{
 public:
     System();
     System(const JVector<Particle> &p);
-    JVector<Particle> system;
+    System& operator =(const System &RHS);
+    void Draw(sf::RenderWindow& window);
+    void Step();
+    JVector<Particle> sys;
+private:
 
 };
 

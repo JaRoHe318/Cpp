@@ -1,7 +1,6 @@
 #ifndef JVECTOR_H
 #define JVECTOR_H
 
-
 #include "vfunctions.h"
 
 template<class T>
@@ -12,9 +11,9 @@ public:
     public:
         friend class JVector;
 
-//        Iterator(){
+        Iterator(){
 
-//        }
+        }
 
         Iterator(T* p=NULL):_ptr(p){
         }
@@ -97,7 +96,7 @@ JVector<T>::JVector(){
     capacity=100;
     howMany=0;
     v = new T[capacity];
-    Fill(v,0,capacity);
+    //    Fill(v,0,capacity);
 }
 
 template<class T>
@@ -120,12 +119,12 @@ JVector<T>::JVector(const JVector<T> &copyThis){
 
 template<class T>
 JVector<T>& JVector<T>::operator =(const JVector<T> &RHS){
-    cout<<" = ";
     if(this==&RHS){
         return *this;
     }
     delete []v;
     v=_makeCopy(RHS.v,RHS.capacity);
+    howMany = RHS.howMany;
 }
 
 
@@ -141,23 +140,25 @@ typename JVector<T>::Iterator JVector<T>::End()const{
 
 template<class T>
 void JVector<T>::PushBack(T pushThis){
-//    T* temp = new T[capacity+1];
 
-//    _copyArray(v,temp,capacity);
+    if(howMany>=capacity){
+        T* temp = new T[2*capacity];
+        _copyArray(v,temp,howMany);
+        delete []v;
+        v=temp;
+    }
     v[howMany]=pushThis;
-//    delete []v;
-//    v=temp;
-//    ++capacity;
     ++howMany;
+    //    ++capacity;
 }
 
 template<class T>
 void JVector<T>::PopBack(){
-//    T* temp = new T[capacity-1];
-//    _copyArray(v,temp,capacity-1);
-//    delete []v;
-//    v=temp;
-//    --capacity;
+    //    T* temp = new T[capacity-1];
+    //    _copyArray(v,temp,capacity-1);
+    //    delete []v;
+    //    v=temp;
+    //    --capacity;
     --howMany;
 }
 

@@ -3,27 +3,29 @@
 animate::animate(){
     window.create(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Multiple balls!");
 
-    JVector<Particle> p(100,Particle());
+//    JVector<Particle> j(10,Particle());
 
-    system = System(p);
+//    system=System(j);
+for(int i =0;i<NUM_BUBBLES;++i){
+    system.sys.PushBack(Particle());
+}
 
-
-
-    window.setFramerateLimit(80);
+    window.setFramerateLimit(FRAME_RATE);
 }
 
 void animate::Draw(){
-//    system.Draw(window);
+    system.Draw(window);
+
 }
 
 void animate::update(){
-//    system.Step();
+    system.Step();
 }
 
 void animate::render(){
-//    window.clear();
-//    Draw();
-//    window.display();
+    window.clear();
+    Draw();
+    window.display();
 }
 
 void animate::processEvents(){

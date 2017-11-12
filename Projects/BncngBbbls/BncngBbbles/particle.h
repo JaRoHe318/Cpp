@@ -1,6 +1,9 @@
 #ifndef PARTICLE_H
 #define PARTICLE_H
 
+#include <iostream>
+using namespace std;
+
 #include "random.h"
 #include "constants.h"
 #include <SFML/Graphics.hpp>

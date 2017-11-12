@@ -5,8 +5,8 @@ int radius;
 Particle::Particle(){
     Random r;
 
-    int xpos = r.Next(10,100);
-    int ypos = r.Next(10,100);
+    int xpos = r.Next(radius,SCREEN_WIDTH-radius);
+    int ypos = r.Next(radius,SCREEN_HEIGHT-radius);
 
     radius = r.Next(5,15);
 

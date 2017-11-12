@@ -106,7 +106,7 @@ typename List<T>::Iterator List<T>::Begin() const{
 template <class T>
 typename List<T>::Iterator List<T>::End() const{
     typename JVector<T>::Iterator it;
-    Iterator(it = _ptr->End());
+//    Iterator(it = _ptr->End());
 }
 
 

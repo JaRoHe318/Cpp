@@ -1,6 +1,6 @@
 #include <iostream>
 #include "jvector.h"
-#include "list.h"
+//#include "list.h"
 using namespace std;
 
 void testList();
@@ -10,6 +10,12 @@ void printList (const List<int>& l);
 
 int main(){
     cout<<"\n\n\n=================================================\n\n";
+
+    JVector<int> test;
+
+    JVector<int> copyFrom(100,10);
+
+    test=copyFrom;
 
 //    testJVector();
 
