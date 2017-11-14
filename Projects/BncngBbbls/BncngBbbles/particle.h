@@ -16,7 +16,8 @@ public:
 private:
     sf::CircleShape shape;
     sf::Vector2f vel;
-
+    int radius;
+    int pointCount;
 };
 
 #endif // PARTICLE_H

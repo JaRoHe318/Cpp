@@ -76,7 +76,8 @@ public:
 
     Iterator End() const;
 
-    void PushBack(T pushThis);
+    void
+    PushBack(T pushThis);
 
     void PopBack();
 
@@ -90,7 +91,7 @@ private:
 
 template<class T>
 JVector<T>::JVector(){
-    capacity=10;//was200!
+    capacity=200;//was200!
     howMany=0;
     v = new T[capacity];
 }
@@ -110,7 +111,8 @@ JVector<T>::~JVector(){
 
 template<class T>
 JVector<T>::JVector(const JVector<T> &copyThis){
-    v=_makeCopy(copyThis,copyThis.capacity);
+    v=_makeCopy(copyThis.v,copyThis.capacity);
+    howMany=copyThis.howMany;
 }
 
 template<class T>
@@ -119,9 +121,9 @@ JVector<T>& JVector<T>::operator =(const JVector<T> &RHS){
         return *this;
     }
     delete []v;
-//    this(RHS);
+    howMany = RHS.howMany;
     v=_makeCopy(RHS.v,RHS.capacity);
-    howMany=RHS.howMany;
+    return *this;
 }
 
 

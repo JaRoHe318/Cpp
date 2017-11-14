@@ -3,12 +3,11 @@
 animate::animate(){
     window.create(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Multiple balls!");
 
-//    JVector<Particle> j(10,Particle());
+    system.howMany(NUM_BUBBLES);
 
-//    system=System(j);
-for(int i =0;i<NUM_BUBBLES;++i){
-    system.sys.PushBack(Particle());
-}
+    //for(int i =0;i<NUM_BUBBLES;++i){
+    //    system.sys.PushBack(Particle());
+    //}
 
     window.setFramerateLimit(FRAME_RATE);
 }
@@ -60,8 +59,8 @@ void animate::processEvents(){
             break;
 
         case sf::Event::MouseMoved:
-//            mouseX = event.mouseMove.x;
-//            mouseY = event.mouseMove.y;
+            //            mouseX = event.mouseMove.x;
+            //            mouseY = event.mouseMove.y;
 
             break;
         case sf::Event::MouseButtonReleased:

@@ -96,7 +96,6 @@ JVector<T>::JVector(){
     capacity=100;
     howMany=0;
     v = new T[capacity];
-    //    Fill(v,0,capacity);
 }
 
 template<class T>
@@ -125,6 +124,7 @@ JVector<T>& JVector<T>::operator =(const JVector<T> &RHS){
     delete []v;
     v=_makeCopy(RHS.v,RHS.capacity);
     howMany = RHS.howMany;
+    return *this;
 }
 
 
@@ -149,17 +149,13 @@ void JVector<T>::PushBack(T pushThis){
     }
     v[howMany]=pushThis;
     ++howMany;
-    //    ++capacity;
 }
 
 template<class T>
 void JVector<T>::PopBack(){
-    //    T* temp = new T[capacity-1];
-    //    _copyArray(v,temp,capacity-1);
-    //    delete []v;
-    //    v=temp;
-    //    --capacity;
-    --howMany;
+    if(howMany>0){
+        --howMany;
+    }
 }
 
 template<class T>

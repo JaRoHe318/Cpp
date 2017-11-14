@@ -1,6 +1,7 @@
 #include <iostream>
 #include "animate.h"
 using namespace std;
+#include <vector>
 
 int main(){
     animate game;
