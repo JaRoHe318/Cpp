@@ -6,4 +6,6 @@ CONFIG -= qt
 SOURCES += main.cpp
 
 HEADERS += \
-    jvector.h
+    jvector.h \
+    linkedlist.h \
+    node.h

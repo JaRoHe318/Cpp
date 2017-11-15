@@ -1,10 +1,27 @@
-#ifndef LINKED_LIST_FUNCTIONS_H
-#define LINKED_LIST_FUNCTIONS_H
+#ifndef NODE_H
+#define NODE_H
 
-using namespace std;
-#include <iostream>
+template <class T>
+struct node{
+    T _item;
+    node<T>* _next;
+    node(T item = T());
 
-#include "node.h"
+    template <class U>
+    friend ostream& operator <<(ostream& outs, const node<U>& print_me);
+};
+
+template <class T>
+node<T>::node(T item):_item(item), _next(NULL){
+
+}
+template <class U>
+ostream& operator <<(ostream& outs, const node<U>& print_me){
+//    outs<<"["<<print_me._item<<"]->";
+    outs<<print_me._item;
+    return outs;
+}
+
 
 template<class U>
 ostream& _print_list(ostream &outs, node<U>* head_ptr){
@@ -52,7 +69,7 @@ node<T>* _insertAfter(node<T>* &head, node<T>* afterThis ,const T &insertThis){
 template<class T>
 node<T>* _insertRand(node<T>* &head,node<T>* afterThis){
     int ran=rand() % 100 + 1;
-    _insertAfter(head, afterThis, ran);
+    return _insertAfter(head, afterThis, ran);
 }
 
 template<class T>
@@ -62,8 +79,8 @@ node<T>* _insertBefore(node<T>* &head,node<T>* beforeThis ,const T &insertThis){
 
 template<class T>
 node<T>* _previousNode(node<T>* head, node<T>* prevToThis){
-    node<int>* walker = head;
-    node<int>* stalker = NULL;
+    node<T>* walker = head;
+    node<T>* stalker = NULL;
     if (prevToThis == head){
         return NULL;
     }
@@ -90,20 +107,27 @@ node<T>* _deleteNode(node<T>* &head, node<T>* deleteThis){
     return head;
 }
 
+
 template<class T>
 node<T>* _copyList(node<T>* head){
+    T tempItem;
     node<T>* w = head;
     node<T>* copy = NULL;
+    node<T>* copyPtr=NULL;
 
-    T tempVal;
-
+    if(copy==NULL){
+        tempItem=w->_item;
+        copy=_insert_head(head,tempItem);
+        copyPtr=copy;
+        w=w->_next;
+    }else{
     while(w!=NULL){
-        tempVal = w->_item;
-        _insertAfter(copy,w,tempVal);
-//        _insertAfter(copy,w,w->_item);
+        tempItem = w->_item;
+        _insertAfter(copy,w,tempItem);
         w=w->_next;
     }
-    return copy;
+    }
+    return copyPtr;
 }
 
 template<class T>
@@ -119,6 +143,7 @@ node<T>* _lastNode(node<T>* head){
     return head;
 }
 
+
 template <class T>
 void _deleteAll(node<T>* &head){
     node<int>* walker = head;
@@ -129,4 +154,39 @@ void _deleteAll(node<T>* &head){
     }
 }
 
-#endif // LINKED_LIST_FUNCTIONS_H
+template <typename T>//insert
+node<T>* _InsertSorted(node<T>* &head, T item, bool ascending=true){
+    node<T>* w = head;
+    node<T>* s = NULL;
+
+    if(head==NULL){
+        w=_insert_head(head,item);
+    }else{
+        while(w!=NULL){
+            s=w;
+            w=w->_next;
+            if(w->_next==NULL){
+                _insertAfter(head,s,item);
+            }else
+            if(w->_item>=item){
+                _insertAfter(head,s,item);
+            }
+        }
+    }
+}
+
+template <typename T>//insert or add if a dup
+node<T>* InsertSorted_and_add(node<T>* &head, T item, bool ascending=true){
+
+}
+
+//node after which this
+//    item goes //order: 0 ascending
+template <typename T>
+node<T>* WhereThisGoes(node<T>* head, T item,bool ascending=true){
+
+}
+
+
+
+#endif // NODE_H
