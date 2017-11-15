@@ -5,10 +5,6 @@ animate::animate(){
 
     system.howMany(NUM_BUBBLES);
 
-    //for(int i =0;i<NUM_BUBBLES;++i){
-    //    system.sys.PushBack(Particle());
-    //}
-
     window.setFramerateLimit(FRAME_RATE);
 }
 

@@ -4,7 +4,7 @@
 const float SCREEN_WIDTH = 1000;
 const float SCREEN_HEIGHT = 600;
 
-const int NUM_BUBBLES = 10;
+const int NUM_BUBBLES = 100;
 const int FRAME_RATE = 60;
 
 const int SB_MOUSE_POSITION = 0;

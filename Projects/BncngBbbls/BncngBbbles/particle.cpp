@@ -21,26 +21,25 @@ Particle::Particle(){
     int g_ = r.Next(0,255);
     int b_ = r.Next(0,255);
     sf::Color test = sf::Color(r_, g_, b_);
-
-//    shape.setFillColor(sf::Color(r_, g_, b_));
-     shape.setFillColor(test);
+    shape.setFillColor(test);
+    shape.setOrigin(0,0);
 }
 
 void Particle::UpdateV(){
     Random r;
-        shape.move(vel);
+    shape.move(vel);
 
-        sf::Vector2f pos = shape.getPosition();
-        if ((pos.x)>=SCREEN_WIDTH-(2*radius))
-            vel = sf::Vector2f(-1*vel.x,1*vel.y);
-        if (pos.x<=0)
-            vel = sf::Vector2f(-1*vel.x,1*vel.y);
-        if ((pos.y)>=SCREEN_HEIGHT-(2*radius))
-            vel = sf::Vector2f(1*vel.x,-1*vel.y);
-        if (pos.y<=0)
-            vel = sf::Vector2f(1*vel.x,-1*vel.y);
+    sf::Vector2f pos = shape.getPosition();
+    if ((pos.x)>=SCREEN_WIDTH-(2*radius))
+        vel = sf::Vector2f(-1*vel.x,1*vel.y);
+    if (pos.x<=0)
+        vel = sf::Vector2f(-1*vel.x,1*vel.y);
+    if ((pos.y)>=SCREEN_HEIGHT-(2*radius))
+        vel = sf::Vector2f(1*vel.x,-1*vel.y);
+    if (pos.y<=0)
+        vel = sf::Vector2f(1*vel.x,-1*vel.y);
 
-        shape.rotate(30);
+    shape.rotate(1);
 }
 
 void Particle::Draw(sf::RenderWindow& window){

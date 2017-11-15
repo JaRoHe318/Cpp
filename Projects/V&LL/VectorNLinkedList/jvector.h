@@ -10,7 +10,6 @@ public:
         friend class JVector;
 
         Iterator(){
-
         }
 
         Iterator(T* p=NULL):_ptr(p){
