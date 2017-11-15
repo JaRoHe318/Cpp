@@ -6,4 +6,5 @@ CONFIG -= qt
 SOURCES += main.cpp
 
 HEADERS += \
-    jstack.h
+    jstack.h \
+    jqueue.h

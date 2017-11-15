@@ -6,6 +6,11 @@ using namespace std;
 #include "linkedlist.h"
 
 int main(){
+    List<int> test;
+
+    test.InsertHead(22);
+
+    cout<<test;
 
     return 0;
 }

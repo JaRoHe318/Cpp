@@ -23,15 +23,21 @@ Particle::Particle(){
     int g_ = r.Next(0,255);
     int b_ = r.Next(0,255);
     sf::Color test = sf::Color(r_, g_, b_);
+<<<<<<< HEAD
 
     //    shape.setFillColor(sf::Color(r_, g_, b_));
+=======
+>>>>>>> 9aa3f9e6305ec83dfb6f3221c6366a0b63dbcc9e
     shape.setFillColor(test);
     shape.setOrigin(0,0);
 }
 
 void Particle::UpdateV(){
     Random r;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9aa3f9e6305ec83dfb6f3221c6366a0b63dbcc9e
     shape.move(vel);
 
     sf::Vector2f pos = shape.getPosition();
@@ -44,7 +50,11 @@ void Particle::UpdateV(){
     if (pos.y<=0)
         vel = sf::Vector2f(1*vel.x,-1*vel.y);
 
+<<<<<<< HEAD
     //        shape.rotate(1);
+=======
+    shape.rotate(1);
+>>>>>>> 9aa3f9e6305ec83dfb6f3221c6366a0b63dbcc9e
 }
 
 void Particle::Draw(sf::RenderWindow& window){

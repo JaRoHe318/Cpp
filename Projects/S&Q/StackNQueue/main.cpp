@@ -9,7 +9,7 @@ int main(){
 
     JStack<int> test;
 
-    for(int i=0;i<10;++i){
+    for(int i=3;i<10;++i){
         test.Push(i);
     }
 
@@ -17,9 +17,11 @@ int main(){
         cout<<"\nTest empty!\n";
     }
 
-    for(int i=0;i<12;++i){
-        cout<<" in Stack:"<<test.Pop()<<" Size is "<<test.sizeOf()<<"\n";
+    for(int i=0;i<10;++i){
+        cout<<" Popped:"<<test.Pop()<<" Size is "<<test.sizeOf()<<"\n";
     }
+
+    cout<<test.Top();
 
     if(test.isEmpty()){
         cout<<"\n\nTest empty!\n";
