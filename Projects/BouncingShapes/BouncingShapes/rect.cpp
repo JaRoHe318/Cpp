@@ -1,7 +1,6 @@
 #include "rect.h"
 
-Rect::Rect()
-{
+Rect::Rect(){
 
 }
 
@@ -9,6 +8,6 @@ void Rect::UpdateV(){
 
 }
 
-void Rect::Draw(sf::RenderWindow& widnow){
-
+void Rect::Draw(sf::RenderWindow& window){
+    window.draw(_rect);
 }

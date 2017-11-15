@@ -21,12 +21,9 @@ void System::setVector(const JVector<Particle> &p){
 }
 
 void System::howMany(int num){
-
     for(int i =0;i<NUM_BUBBLES;++i){
-
         sys.PushBack(Particle());
     }
-
 }
 
 void System::Step(){

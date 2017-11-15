@@ -1,9 +1,11 @@
 #include <iostream>
 using namespace std;
 
-#include "particle.h"
+#include "animate.h"
 
-int main()  {
-    cout << "Hello World!" << endl;
+int main(){
+    animate game;
+    game.run();
+    cout<<endl<<endl<<"------ MAIN EXITING --------------------------"<<endl;
     return 0;
 }

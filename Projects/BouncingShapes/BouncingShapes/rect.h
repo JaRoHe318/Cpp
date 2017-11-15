@@ -7,7 +7,7 @@ class Rect:public Particle{
 public:
     Rect();
     void UpdateV();
-    void Draw(sf::RenderWindow& widnow);
+    void Draw(sf::RenderWindow& window);
 private:
     sf::RectangleShape _rect;
 };

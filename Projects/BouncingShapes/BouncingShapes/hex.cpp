@@ -8,6 +8,6 @@ void Hex::UpdateV(){
 
 }
 
-void Hex::Draw(sf::RenderWindow& widnow){
-
+void Hex::Draw(sf::RenderWindow& window){
+    window.draw(_hex);
 }

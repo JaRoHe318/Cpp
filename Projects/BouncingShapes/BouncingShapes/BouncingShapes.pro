@@ -9,7 +9,9 @@ SOURCES += main.cpp \
     rect.cpp \
     circ.cpp \
     hex.cpp \
-    square.cpp
+    square.cpp \
+    system.cpp \
+    animate.cpp
 
 #WINDOWS
 LIBS += -L"..\SFML-2.3.2\lib"
@@ -31,4 +33,6 @@ HEADERS += \
     rect.h \
     circ.h \
     hex.h \
-    square.h
+    square.h \
+    system.h \
+    animate.h

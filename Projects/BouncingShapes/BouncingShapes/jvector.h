@@ -90,7 +90,7 @@ private:
 
 template<class T>
 JVector<T>::JVector(){
-    capacity=10;//was200!
+    capacity=200;//was200!
     howMany=0;
     v = new T[capacity];
 }

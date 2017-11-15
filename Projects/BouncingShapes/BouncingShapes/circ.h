@@ -6,8 +6,9 @@
 class Circ:public Particle{
 public:
     Circ();
+    Circ(int radius, sf::Vector2f pos);
     void UpdateV();
-    void Draw(sf::RenderWindow& widnow);
+    void Draw(sf::RenderWindow& window);
 private:
     sf::CircleShape _circ;
 };

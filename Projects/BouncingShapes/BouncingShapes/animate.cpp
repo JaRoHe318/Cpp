@@ -3,7 +3,6 @@
 animate::animate(){
     window.create(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Multiple balls!");
 
-    system.howMany(NUM_BUBBLES);
 
     window.setFramerateLimit(FRAME_RATE);
 }

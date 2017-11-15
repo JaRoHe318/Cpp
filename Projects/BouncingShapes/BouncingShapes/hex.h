@@ -7,7 +7,7 @@ class Hex:public Particle{
 public:
     Hex();
     void UpdateV();
-    void Draw(sf::RenderWindow& widnow);
+    void Draw(sf::RenderWindow& window);
 private:
     sf::CircleShape _hex;
 };
