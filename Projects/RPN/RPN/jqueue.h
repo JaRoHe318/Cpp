@@ -13,12 +13,12 @@ struct node{
     node(T item):_item(item), _next(nullptr){
     }
 
-    template <class U>
-    friend ostream& operator <<(ostream& outs,
-                                const node<U>& print_me){
-        outs<<"["<<print_me._item<<"]->";
-        return outs;
-    }
+//    template <class U>
+//    friend ostream& operator <<(ostream& outs,
+//                                const node<U>& print_me){
+//        outs<<"["<<print_me._item<<"]->";
+//        return outs;
+//    }
 };
 
 //These are functions========================================
@@ -55,7 +55,7 @@ node<T>* _deleteNode(node<T>* &head, node<T>* deleteThis){
 
 template <class T>
 void _deleteAll(node<T>* &head){
-    node<int>* walker = head;
+    node<T>* walker = head;
 
     while (walker!=nullptr){
         _deleteNode(head, walker);

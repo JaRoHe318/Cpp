@@ -2,11 +2,26 @@
 using namespace std;
 
 #include "jstack.h"
-//#include "
+#include "jqueue.h"
+
+void JStackTest();
+void JQueueTest();
 
 int main(){
     cout << "\nStackNQueue!\n" << endl;
 
+    cout<<"Testing JStack==============================\n\n\n";
+    JStackTest();
+    cout<<"Testing JQueue==============================\n\n\n";
+    JQueueTest();
+
+
+
+    cout<<"\n\n\n\n\n\n\n\n\n";
+    return 0;
+}
+
+void JStackTest(){
     JStack<int> test;
 
     for(int i=3;i<10;++i){
@@ -17,17 +32,34 @@ int main(){
         cout<<"\nTest empty!\n";
     }
 
-    for(int i=0;i<10;++i){
-        cout<<" Popped:"<<test.Pop()<<" Size is "<<test.sizeOf()<<"\n";
+    while(!test.isEmpty()){
+        cout<<" Popped:"<<test.Pop()<<"\nSize is "<<test.sizeOf()<<"\n\n";
     }
 
     cout<<test.Top();
 
-    if(test.isEmpty()){
-        cout<<"\n\nTest empty!\n";
+
+
+}
+
+void JQueueTest(){
+    JQueue<int> test;
+
+    test.Push(11);
+    test.Push(22);
+    test.Push(33);
+
+    cout<<test<<endl;
+
+    cout<<"This was popped:"<<test.Pop()<<"Size is:"<<test.sizeOf()<<endl;
+
+    cout<<"This is now in front:"<<test.Front()<<endl;
+
+    cout<<test;
+
+    while(!test.isEmpty()){
+        cout<<"Popping:"<<test.Pop()<<"\nsize is:"<<test.sizeOf()<<endl;
     }
 
-
-    cout<<"\n\n\n\n\n\n\n\n\n";
-    return 0;
+    cout<<test.Front();
 }

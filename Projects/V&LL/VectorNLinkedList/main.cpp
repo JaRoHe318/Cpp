@@ -10,6 +10,8 @@ int main(){
 
     test.InsertHead(22);
 
+    test.InsertHead(33);
+
     cout<<test;
 
     return 0;

@@ -95,7 +95,7 @@ T JStack<T>::Pop(){
 template<class T>
 T JStack<T>::Top(){
     if(howMany==0){
-        cout<<"\nStack is empty!\n";
+        cout<<"\nStack is empty\n";
         return 0;
     }
     return head[howMany-1];
