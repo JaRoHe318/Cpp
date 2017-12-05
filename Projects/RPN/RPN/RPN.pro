@@ -21,5 +21,4 @@ HEADERS += \
     op.h \
     rpn.h \
     double.h \
-    funct.h \
-    sortingyard.h
+    funct.h
