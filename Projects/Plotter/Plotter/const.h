@@ -1,6 +1,8 @@
 #ifndef CONST_H
 #define CONST_H
 
+#include <SFML/Graphics.hpp>
+
 
 const float SCREEN_WIDTH = 1000;
 const float SCREEN_HEIGHT = 600;

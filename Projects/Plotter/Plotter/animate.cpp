@@ -7,12 +7,12 @@ animate::animate(){
 }
 
 void animate::Draw(){
-//    system.Draw(window);
+//        system.Draw(window);
 
 }
 
 void animate::update(){
-//    system.Step();
+    //    system.Step();
 }
 
 void animate::render(){
@@ -24,7 +24,7 @@ void animate::render(){
 void animate::processEvents(){
     sf::Event event;
 
-    float mouseX, mouseY;
+//    float mouseX, mouseY;
 
     while (window.pollEvent(event)){
 
@@ -34,10 +34,22 @@ void animate::processEvents(){
             break;
 
         case sf::Event::KeyPressed:
+
             switch(event.key.code){
             case sf::Keyboard::Left:
+                //Move Graph Left
                 break;
             case sf::Keyboard::Right:
+                //Move Graph Right
+                break;
+            case sf::Keyboard::I:
+                //zoom in
+                break;
+            case sf::Keyboard::O:
+                //zoom out
+                break;
+            case sf::Keyboard::H:
+                //Set Home?
                 break;
             case sf::Keyboard::Escape:
                 window.close();
@@ -45,21 +57,15 @@ void animate::processEvents(){
             }
             break;
         case sf::Event::MouseEntered:
-
             break;
-
         case sf::Event::MouseLeft:
-
             break;
-
         case sf::Event::MouseMoved:
             //            mouseX = event.mouseMove.x;
             //            mouseY = event.mouseMove.y;
-
             break;
         case sf::Event::MouseButtonReleased:
-
-            break;
+              break;
 
         default:
             break;

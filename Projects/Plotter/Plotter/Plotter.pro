@@ -4,11 +4,15 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    animate.cpp
+    animate.cpp \
+    system.cpp \
+    plotter.cpp
 
 HEADERS += \
     animate.h \
-    const.h
+    const.h \
+    system.h \
+    plotter.h
 
 #WINDOWS
 LIBS += -L"..\SFML-2.3.2\lib"
