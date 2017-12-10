@@ -2,6 +2,7 @@
 #define CONST_H
 
 #include <SFML/Graphics.hpp>
+#include "jqueue.h"
 
 
 const float SCREEN_WIDTH = 1000;

@@ -2,6 +2,7 @@
 #define SYSTEM_H
 
 #include "const.h"
+#include "plotter.h"
 
 class System{
 public:

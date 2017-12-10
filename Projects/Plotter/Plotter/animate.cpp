@@ -1,6 +1,7 @@
 #include "animate.h"
 
 animate::animate(){
+    cout<<"\nIn Animate!\n";
     window.create(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Go Java >:D!");
 
     window.setFramerateLimit(FRAME_RATE);

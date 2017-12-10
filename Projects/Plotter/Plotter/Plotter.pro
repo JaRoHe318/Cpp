@@ -13,6 +13,9 @@ HEADERS += \
     const.h \
     system.h \
     plotter.h
+    plotter.h \
+    point.h \
+    jqueue.h
 
 #WINDOWS
 LIBS += -L"..\SFML-2.3.2\lib"
