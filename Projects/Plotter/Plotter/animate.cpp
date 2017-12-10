@@ -10,6 +10,19 @@ animate::animate(){
 void animate::Draw(){
 //        system.Draw(window);
 
+    //This is the current origin
+    sf::RectangleShape yaxis(sf::Vector2f(LINE_WIDTH,SCREEN_HEIGHT));
+    yaxis.setPosition(sf::Vector2f(500-(LINE_WIDTH/2),0));
+    yaxis.setFillColor(sf::Color(100,100,100));
+//    yaxis.setFillColor(sf::Color::Red);
+    window.draw(yaxis);
+
+    sf::RectangleShape xaxis(sf::Vector2f(SCREEN_WIDTH,LINE_WIDTH));
+    xaxis.setPosition(sf::Vector2f(0,300-(LINE_WIDTH/2)));
+    xaxis.setFillColor(sf::Color(100,100,100));
+//    xaxis.setFillColor(sf::Color::Red);
+    window.draw(xaxis);
+
 }
 
 void animate::update(){

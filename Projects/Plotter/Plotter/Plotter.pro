@@ -6,15 +6,24 @@ CONFIG -= qt
 SOURCES += main.cpp \
     animate.cpp \
     system.cpp \
-    plotter.cpp
+    plotter.cpp \
+    graph.cpp \
+    point.cpp \
+    translate.cpp
 
 HEADERS += \
     animate.h \
+    jvector.h\
+    graph.h\
     const.h \
     system.h \
     plotter.h \
     point.h \
+<<<<<<< HEAD
     jqueue.h
+=======
+    translate.h
+>>>>>>> 9a3b3d39e7f06a9202b2d8f1c1d8842e397c5828
 
 #WINDOWS
 LIBS += -L"..\SFML-2.3.2\lib"
