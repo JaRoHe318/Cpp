@@ -12,7 +12,6 @@ HEADERS += \
     animate.h \
     const.h \
     system.h \
-    plotter.h
     plotter.h \
     point.h \
     jqueue.h

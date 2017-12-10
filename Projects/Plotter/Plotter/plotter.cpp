@@ -1,5 +1,6 @@
 #include "plotter.h"
 
+Plotter::Plotter(){    
     _domainMin=0;
     _domainMax=0;
     //generating test points
