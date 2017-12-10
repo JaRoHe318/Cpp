@@ -6,13 +6,20 @@ CONFIG -= qt
 SOURCES += main.cpp \
     animate.cpp \
     system.cpp \
-    plotter.cpp
+    plotter.cpp \
+    graph.cpp \
+    point.cpp \
+    translate.cpp
 
 HEADERS += \
     animate.h \
+    jvector.h\
+    graph.h\
     const.h \
     system.h \
-    plotter.h
+    plotter.h \
+    point.h \
+    translate.h
 
 #WINDOWS
 LIBS += -L"..\SFML-2.3.2\lib"

@@ -2,6 +2,7 @@
 #define SYSTEM_H
 
 #include "const.h"
+#include "graph.h"
 
 class System{
 public:
@@ -9,6 +10,8 @@ public:
     void Draw(sf::RenderWindow& window);
     void Step();
 private:
+    Graph g1;
+    bool rePlot;
 };
 
 #endif // SYSTEM_H
