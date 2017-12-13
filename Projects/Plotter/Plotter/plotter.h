@@ -2,27 +2,29 @@
 #define PLOTTER_H
 
 #include "const.h"
-<<<<<<< HEAD
 #include "point.h"
-#include "system.h"
-=======
+//#include "system.h"
+//#include "rpn.h'
 
-
->>>>>>> 9a3b3d39e7f06a9202b2d8f1c1d8842e397c5828
 class Plotter{
 public:
     Plotter();
     Plotter(JQueue<Point> points,double domainMin,
-            double domainMax);
+    double domainMax);
+    void setDomain(double domainMin, double domainMax);
+    void getDomain();
 
 private:
-<<<<<<< HEAD
-JQueue<Point> _points;
+JVector<Point> _points;
+
 double _domainMin;
 double _domainMax;
-=======
+double _incr;
+double _domainTotal;
 
->>>>>>> 9a3b3d39e7f06a9202b2d8f1c1d8842e397c5828
+void setPoints(int numPoints);
+void matrix();
+
 };
 
 #endif // PLOTTER_H

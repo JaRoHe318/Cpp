@@ -11,10 +11,9 @@ public:
     Funct(string fun);
     void Print(ostream &outs) const;
     int TypeOf();
-//    char getFunct();
+    priority getPriority();
     functType getFunct();
 private:
-//    char _funct;
     functType _funct;
     functType setFunctType(string &fun);
 

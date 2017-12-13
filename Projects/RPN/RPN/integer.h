@@ -12,6 +12,8 @@ public:
     Integer(string value);
     void Print(ostream &outs)const;
     int TypeOf();
+
+    priority getPriority();
     double getInteger();
 private:
     double i;

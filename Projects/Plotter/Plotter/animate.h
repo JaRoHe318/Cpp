@@ -7,9 +7,6 @@ using namespace std;
 #include "const.h"
 #include "system.h"
 
-
-#include <SFML/Graphics.hpp>
-
 class animate{
 public:
     animate();
@@ -21,7 +18,7 @@ public:
 
 private:
     sf::RenderWindow window;
-    System system;                      //container for all the animated objects
+    System system;  //container for all the animated objects
 };
 
 #endif // ANIMATE_H

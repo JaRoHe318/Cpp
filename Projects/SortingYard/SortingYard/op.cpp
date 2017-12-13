@@ -10,6 +10,7 @@ Op::Op(string op){
 OPType Op::setOPType(string &op){
     if(op.length()>0){
         if(op=="+"){
+            cout<<"+"<<PLUS<<endl;
             opPriority=ADD;
             return PLUS;
             cout<<"\nPlus Found!\n";
@@ -20,14 +21,18 @@ OPType Op::setOPType(string &op){
             opPriority=DIVIDE;
             return DIV;
         }else if(op=="*"){
+            cout<<"*"<<MULT<<endl;
             opPriority=TIMES;
             return MULT;
         }else if(op=="^"){
             opPriority=E;
             return EXP;
-        }else if(op=="("||op==")"){
+        }else if(op=="("){
             opPriority=PAREN;
-            return P;
+            return SP;
+        }else if(op==")"){
+            opPriority=PAREN;
+            return EP;
         }else{
             cout<<"\nUNKNOWN OP\n";
         }

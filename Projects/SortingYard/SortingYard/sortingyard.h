@@ -5,7 +5,7 @@
 
 #include "jqueue.h"
 #include "jstack.h"
-
+#include "consts.h"
 #include "jtoken.h"
 #include "integer.h"
 #include "double.h"
@@ -24,7 +24,9 @@ private:
     void Process(JQueue<JToken*> &fixMe);
     void checkOP(JStack<JToken*> &ops, JQueue<JToken *> &fixMe);
     void checkFun(JStack<JToken*> &fun, JQueue<JToken *> &fixMe);
+    void checkPriority(JToken* &check, JStack<JToken*> &OPStack);
     JQueue<JToken*> postFix;
+    bool startParen;
 
 };
 

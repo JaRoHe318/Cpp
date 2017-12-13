@@ -1,17 +1,16 @@
 #include "funct.h"
-
+//This is the final funct
 Funct::Funct(){
 }
-
 Funct::Funct(string fun){
 _funct=setFunctType(fun);
 }
-
 functType Funct::setFunctType(string &fun){
     if(fun.length()>0){
         if(fun=="sin"){
-            cout<<"\nSin Found!\n";
             return SIN;
+        }else if(fun=="x"){
+            return X;
         }else if(fun=="cos"){
             return COS;
         }else if(fun=="tan"){
@@ -30,19 +29,15 @@ functType Funct::setFunctType(string &fun){
         }
     }//check len
 }
-
 void Funct::Print(ostream &outs) const{
     cout<<_funct;
 }
-
 int Funct::TypeOf(){
     return FUNCTION;
 }
-
 functType Funct::getFunct(){
     return _funct;
 }
-
 priority Funct::getPriority(){
     return FUN;
 }

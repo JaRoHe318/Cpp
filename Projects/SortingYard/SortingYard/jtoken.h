@@ -15,8 +15,8 @@ public:
 //    friend istream& operator >>(istream& ins, JToken& getToken);input?
 
     virtual void Print(ostream& outs)const;
-    virtual int TypeOf(){}; //to enable children to identify themselves
-    virtual priority getPriority(){};//to enable children to get precedence
+    virtual int TypeOf(){} //to enable children to identify themselves
+    virtual priority getPriority(){}//to enable children to get precedence
 };
 
 #endif // JTOKEN_H

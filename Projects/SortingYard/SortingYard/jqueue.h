@@ -1,6 +1,8 @@
 #ifndef JQUEUE_H
 #define JQUEUE_H
-
+//======================================
+//THIS IS THE ONE THAT WORKS YOU FUCKER
+//=======================================
 #include <iostream>
 using namespace std;
 
@@ -39,6 +41,28 @@ node<T>* _previousNode(node<T>* head, node<T>* prevToThis){
     }
 }
 
+template <class T>
+node<T>* _insert_head(node<T>* &head_ptr, const T& item){
+
+    node<T>* temp = new node<T>(item);
+    temp->_next = head_ptr;
+    head_ptr = temp;
+    return head_ptr;
+}
+
+template <class T>
+node<T>* _insertAfter(node<T>* &head, node<T>* afterThis,
+                      const T &insertThis){
+    if(afterThis==nullptr){
+        return _insert_head(head,insertThis);
+    }else{
+        node<T>* temp = new node<T>(insertThis);
+        temp->_next=afterThis->_next;
+        afterThis->_next = temp;
+        return temp;
+    }
+}
+
 template<class T>
 node<T>* _deleteNode(node<T>* &head, node<T>* deleteThis){
     node<T>* temp = deleteThis->_next;
@@ -65,20 +89,28 @@ void _deleteAll(node<T>* &head){
 
 template<class T>
 node<T>* _copyList(node<T>* head){
+    node<T>* tempNode=nullptr;
     T tempItem;
     node<T>* w = head;
-    node<T>* copy = nullptr;
     node<T>* copyPtr=nullptr;
+    node<T>* cw = nullptr;
 
-    if(copy==nullptr){
-        tempItem=w->_item;
-        copy=_insert_head(head,tempItem);
-        copyPtr=copy;
-        w=w->_next;
+    if(head==nullptr){
+        return nullptr;
+
     }else{
         while(w!=nullptr){
             tempItem = w->_item;
-            _insertAfter(copy,w,tempItem);
+            tempNode = new node<T>(tempItem);
+            if(copyPtr==nullptr){
+            copyPtr=tempNode;
+            cw=copyPtr;
+            }else{
+            cw->_next=tempNode;
+
+            cw=cw->_next;
+
+            }
             w=w->_next;
         }
     }
@@ -157,6 +189,7 @@ JQueue<T>::~JQueue(){
 template<class T>
 JQueue<T>::JQueue(const JQueue<T> &copyThis){
     head=_copyList(copyThis.head);
+    howMany=copyThis.howMany;
 }
 
 template<class T>
@@ -166,15 +199,13 @@ JQueue<T>& JQueue<T>::operator =(const JQueue<T> &RHS){
     }
     _deleteAll(head);
     head=_copyList(RHS.head);
-
+    howMany=RHS.howMany;
     return *this;
 }
 
 template<class T>
 void JQueue<T>::Push(T pushMe){
-    tail=_insertEnd(head,tail,pushMe);
-
-
+    tail=_insertEnd(head,tail,pushMe); 
     ++howMany;
 }
 
