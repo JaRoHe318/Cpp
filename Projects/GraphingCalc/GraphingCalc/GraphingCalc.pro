@@ -8,7 +8,14 @@ SOURCES += main.cpp \
     system.cpp \
     graph.cpp \
     tokenizer.cpp \
-    jtoken.cpp
+    jtoken.cpp \
+    double.cpp \
+    integer.cpp \
+    op.cpp \
+    funct.cpp \
+    sortingyard.cpp \
+    rpn.cpp \
+    plotter.cpp
 
 HEADERS += \
     animate.h \
@@ -16,7 +23,18 @@ HEADERS += \
     system.h \
     graph.h \
     tokenizer.h \
-    jtoken.h
+    jtoken.h \
+    double.h \
+    integer.h \
+    op.h \
+    funct.h \
+    jqueue.h \
+    sortingyard.h \
+    rpn.h \
+    jstack.h \
+    jvector.h \
+    point.h \
+    plotter.h
 
 #WINDOWS
 LIBS += -L"..\SFML-2.3.2\lib"

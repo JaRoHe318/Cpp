@@ -11,7 +11,8 @@
 class Tokenizer{
 public:
     Tokenizer();
-    void getEquation();
+    void inputEquation();
+    JQueue<JToken*> getEquation();
 private:
     JQueue<JToken*> preFix;
     char _chunks[100];

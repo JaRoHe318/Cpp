@@ -18,16 +18,19 @@ int main(){
     JQueue<JToken*> container;
 
     container.Push(new Funct("x"));
-//    container.Push(new Double(10));
+    //    container.Push(new Double(10));
     container.Push(new Funct("~"));
     container.Push(new Integer(4));
     container.Push(new Integer(2));
     container.Push(new Op("/"));
     container.Push(new Op("*"));
-//    PopQ(container);
-    RPN test(10,container);
+    //    PopQ(container);
+    RPN test;
 
-    cout<<test.getAnswer();
+    for(int i=0;i<10;i+=2){
+        test.getY(i,container);
+        cout<<test.getAnswer();
+    }
 
     //Takes in a Queue of Token Pointers
 

@@ -18,7 +18,5 @@ private:
 //    char _funct;
     functType _funct;
     functType setFunctType(string &fun);
-
 };
-
 #endif // FUNCT_H

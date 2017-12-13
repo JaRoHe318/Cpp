@@ -16,7 +16,7 @@ public:
 
     virtual void Print(ostream& outs)const;
     virtual int TypeOf(){} //to enable children to identify themselves
-    virtual priority getPriority(){}//to enable children to get precedence
+//    virtual priority getPriority(){}//to enable children to get precedence
 
 };
 

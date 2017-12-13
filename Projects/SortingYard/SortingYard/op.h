@@ -1,8 +1,6 @@
 #ifndef OP_H
 #define OP_H
-
 #include "jtoken.h"
-
 class Op:public JToken{
 public:
     Op();
@@ -16,5 +14,4 @@ private:
     priority opPriority;
     OPType setOPType(string &op);
 };
-
 #endif // OP_H

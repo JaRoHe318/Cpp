@@ -13,7 +13,7 @@ public:
     void Print(ostream &outs)const;
     int TypeOf();
 
-    priority getPriority();
+//    priority getPriority();
     double getInteger();
 private:
     double i;

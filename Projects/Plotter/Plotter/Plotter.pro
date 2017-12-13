@@ -19,7 +19,8 @@ HEADERS += \
     plotter.h \
     point.h \
     jqueue.h \
-    translate.h
+    translate.h \
+    jvector_copy.h
 
 #WINDOWS
 LIBS += -L"..\SFML-2.3.2\lib"

@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-#include "const.h"
+#include "consts.h"
 #include "system.h"
 
 class animate{

@@ -1,9 +1,10 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 
-#include "const.h"
+#include "consts.h"
 #include "point.h"
 #include "plotter.h"
+#include "jtoken.h"
 
 class Graph{
 public:
@@ -14,6 +15,7 @@ public:
 //    void setEquation(string equation);
     void setDomain(double domainMin, double domainMax);
     void drawGraph(sf::RenderWindow &window);
+    void setEquation(JQueue<JToken*> &postFix);
 private:
     Plotter p;
     JVector<Point> points;

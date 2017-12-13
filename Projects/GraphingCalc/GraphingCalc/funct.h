@@ -3,15 +3,13 @@
 
 #include <string>
 #include "jtoken.h"
-
-
 class Funct:public JToken{
 public:
     Funct();
     Funct(string fun);
     void Print(ostream &outs) const;
     int TypeOf();
-//    priority getPriority();
+    priority getPriority();
     functType getFunct();
 private:
     functType _funct;

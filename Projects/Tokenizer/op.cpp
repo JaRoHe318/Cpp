@@ -1,18 +1,14 @@
 #include "op.h"
-
 Op::Op(){
 }
-
 Op::Op(string op){
     _op = setOPType(op);
 }
-
 OPType Op::setOPType(string &op){
     if(op.length()>0){
         if(op=="+"){
             opPriority=ADD;
             return PLUS;
-            cout<<"\nPlus Found!\n";
         }else if(op=="-"){
             opPriority=SUB;
             return MINUS;
@@ -37,15 +33,12 @@ OPType Op::setOPType(string &op){
 void Op::Print(ostream &outs)const{
     outs<<_op;
 }
-
 int Op::TypeOf(){
     return OPERATOR;
 }
-
 OPType Op::getOp(){
     return _op;
 }
-
 priority Op::getPriority(){
     return opPriority;
 }

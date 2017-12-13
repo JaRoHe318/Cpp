@@ -10,7 +10,6 @@ Graph::Graph(){
     xaxis.setPosition(sf::Vector2f(xOfX,yOfX));
 //    xaxis.setFillColor(sf::Color(100,100,100));
     xaxis.setFillColor(sf::Color::Red);
-
 }
 
 void Graph::Update(){

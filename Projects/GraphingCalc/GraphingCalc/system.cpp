@@ -20,7 +20,12 @@ void System::Zoom(char how){
 
 }
 void System::setEquation(){
-
+    Tokenizer tokenize;
+    tokenize.inputEquation();
+    JQueue<JToken*> preFix =tokenize.getEquation();
+    SortingYard sort(preFix);
+    postFix=sort.getFixed();
+    g.setEquation(postFix);
 }
 
 void System::setDomain(){

@@ -10,7 +10,7 @@ public:
     void Print(ostream &outs)const;
     int TypeOf();
     OPType getOp();
-    priority getPriority();
+//    priority getPriority();
 private:
     OPType _op;
     priority opPriority;

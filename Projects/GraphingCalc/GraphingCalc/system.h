@@ -1,8 +1,11 @@
 #ifndef SYSTEM_H
 #define SYSTEM_H
 
-#include "const.h"
+#include "consts.h"
 #include "graph.h"
+#include "tokenizer.h"
+#include "sortingyard.h"
+#include "rpn.h"
 
 class System{
 public:
@@ -15,6 +18,7 @@ public:
     void setDomain();
 private:
     Graph g;
+    JQueue<JToken*> postFix;
     bool rePlot;//?
 };
 

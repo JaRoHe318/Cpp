@@ -3,7 +3,7 @@
 Tokenizer::Tokenizer(){
 }
 
-void Tokenizer::getEquation(){
+void Tokenizer::inputEquation(){
     char ans;
     string equation;
     cout<<"Enter funct:";
@@ -86,3 +86,6 @@ void Tokenizer::setType(string chunk){
 
 }
 
+JQueue<JToken*> Tokenizer::getEquation(){
+    return preFix;
+}
