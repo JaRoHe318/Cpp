@@ -13,7 +13,8 @@ public:
     functType getFunct();
 private:
     functType _funct;
-    functType setFunctType(string &fun);
+    priority _p;
+    functType setFunctType(string fun);
 
 };
 

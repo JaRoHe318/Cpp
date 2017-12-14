@@ -18,19 +18,18 @@
 */
 class Point{
 public:
-    Point(){}
+    Point(){
+        _r=POINT_R;
+    }
     Point(sf::Vector2f pos, int r){
         _r=r;
         _pos=pos;
     }
+
     Point(double x, double y){
-        _r=5;
+        _point = sf::CircleShape(POINT_R);
         _pos=sf::Vector2f(x,y);
         _point.setPosition(_pos);
-    }
-    Point(double x, double y,int r){
-        _r=r;
-        _pos=sf::Vector2f(x,y);
     }
 
     void setPos(double x,double y){

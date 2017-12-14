@@ -1,0 +1,16 @@
+INPUT(
+./debug\main.o
+./debug\animate.o
+./debug\system.o
+./debug\graph.o
+./debug\tokenizer.o
+./debug\jtoken.o
+./debug\double.o
+./debug\integer.o
+./debug\op.o
+./debug\funct.o
+./debug\sortingyard.o
+./debug\rpn.o
+./debug\plotter.o
+./debug\transform.o
+);

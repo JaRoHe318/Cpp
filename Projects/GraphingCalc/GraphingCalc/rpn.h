@@ -5,7 +5,6 @@
 
 #include "jqueue.h"
 #include "jstack.h"
-
 #include "jtoken.h"
 #include "integer.h"
 #include "double.h"

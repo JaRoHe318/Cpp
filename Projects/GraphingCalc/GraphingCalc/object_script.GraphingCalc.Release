@@ -1,0 +1,16 @@
+INPUT(
+./release\main.o
+./release\animate.o
+./release\system.o
+./release\graph.o
+./release\tokenizer.o
+./release\jtoken.o
+./release\double.o
+./release\integer.o
+./release\op.o
+./release\funct.o
+./release\sortingyard.o
+./release\rpn.o
+./release\plotter.o
+./release\transform.o
+);

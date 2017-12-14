@@ -5,6 +5,8 @@
 #include "point.h"
 #include "plotter.h"
 #include "jtoken.h"
+#include "transform.h"
+#include "vector"
 
 class Graph{
 public:
@@ -12,13 +14,23 @@ public:
     void Update();
     void Pan(char where);
     void Zoom(char how);
-//    void setEquation(string equation);
-    void setDomain(double domainMin, double domainMax);
+    void setDomain();
     void drawGraph(sf::RenderWindow &window);
     void setEquation(JQueue<JToken*> &postFix);
+
+
 private:
     Plotter p;
-    JVector<Point> points;
+    Transform t;
+    RPN r;
+    JQueue<JToken*> _postFix;
+    sf::CircleShape test;
+//    JVector<sf::Vector2f> points;
+    vector<sf::Vector2f> points;
+
+    void drawAxis(sf::RenderWindow &window);
+    void setPoints();
+    void setZoomPoints(char how);
     void setDefault();
 
     sf::RectangleShape yaxis;
@@ -28,7 +40,11 @@ private:
     double _domainTotal;
     double _rangeMin, _rangeMax;
     double _incr;
-    void drawAxis(sf::RenderWindow &window);
+
+    bool reDraw;
+    bool zoomIn;
+    bool zoomOut;
+
 };
 
 #endif // GRAPH_H

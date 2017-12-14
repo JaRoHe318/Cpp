@@ -7,10 +7,8 @@ Op::Op(string op){
 OPType Op::setOPType(string &op){
     if(op.length()>0){
         if(op=="+"){
-            cout<<"+"<<PLUS<<endl;
             opPriority=ADD;
             return PLUS;
-            cout<<"\nPlus Found!\n";
         }else if(op=="-"){
             opPriority=SUB;
             return MINUS;

@@ -15,9 +15,7 @@
 class SortingYard{
 public:
     SortingYard();
-    SortingYard(JQueue<JToken*> &fixMe);
-
-
+    SortingYard(JQueue<JToken *> fixMe);
     JQueue<JToken*> getFixed();
 
 private:

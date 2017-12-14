@@ -1,7 +1,6 @@
 #include "system.h"
 
 System::System(){
-    cout<<"\nIn system\n";
 }
 
 void System::Draw(sf::RenderWindow &window){
@@ -17,8 +16,9 @@ void System::Pan(char where){
 }
 
 void System::Zoom(char how){
-
+    g.Zoom(how);
 }
+
 void System::setEquation(){
     Tokenizer tokenize;
     tokenize.inputEquation();
@@ -29,5 +29,5 @@ void System::setEquation(){
 }
 
 void System::setDomain(){
-
+    g.setDomain();
 }

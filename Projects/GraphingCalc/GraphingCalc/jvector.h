@@ -164,7 +164,6 @@ typename JVector<T>::Iterator JVector<T>::End()const{
 
 template<class T>
 void JVector<T>::PushBack(T pushThis){
-
     if(howMany>=capacity){
         T* temp = new T[2*capacity];
         _copyArray(v,temp,howMany);

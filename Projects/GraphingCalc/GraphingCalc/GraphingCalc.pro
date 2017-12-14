@@ -15,7 +15,8 @@ SOURCES += main.cpp \
     funct.cpp \
     sortingyard.cpp \
     rpn.cpp \
-    plotter.cpp
+    plotter.cpp \
+    transform.cpp
 
 HEADERS += \
     animate.h \
@@ -34,7 +35,8 @@ HEADERS += \
     jstack.h \
     jvector.h \
     point.h \
-    plotter.h
+    plotter.h \
+    transform.h
 
 #WINDOWS
 LIBS += -L"..\SFML-2.3.2\lib"

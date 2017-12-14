@@ -6,7 +6,6 @@ RPN::RPN(){
 
 RPN::RPN(double x, JQueue<JToken *> postFix){
     _x=x;
-
     Process(postFix);
 }
 

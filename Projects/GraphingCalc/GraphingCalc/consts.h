@@ -24,6 +24,7 @@ const double SCREEN_HEIGHT = 600;
 const float LINE_WIDTH = 1;
 const int NUM_POINTS = 10000;
 const int FRAME_RATE = 60;
+const int POINT_R=5;
 
 
 #endif // CONSTS_H

@@ -4,7 +4,6 @@ Tokenizer::Tokenizer(){
 }
 
 void Tokenizer::inputEquation(){
-    char ans;
     string equation;
     cout<<"Enter funct:";
 
@@ -16,25 +15,28 @@ void Tokenizer::inputEquation(){
 void Tokenizer::Process(string &chunks){
 
     JQueue<string> holder;
+    string temp;
     int spacePos =chunks.find(" ");
     int pos = 0;
 
     while(pos!= chunks.length()){
-        cout<<"i";
         holder.Push(chunks.substr(pos, spacePos - pos));
         pos=spacePos+1;
         spacePos=chunks.find(" ",pos);
     }
 
     while(!holder.isEmpty()){
-        setType(holder.Pop());
+        temp=holder.Pop();
+        setType(temp);
     }
 }
 
 void Tokenizer::setType(string chunk){
-    cout<<"|"<<chunk<<"|";
+    cout<<"\n|"<<chunk<<"|";
 
-    if(!chunk.compare("+")){
+    if(!chunk.compare("x")){
+        preFix.Push(new Funct(chunk));
+    }else if(!chunk.compare("+")){
         preFix.Push(new Op(chunk));
     }
     else if(!chunk.compare("-")){

@@ -1,9 +1,9 @@
 #include "animate.h"
 
 animate::animate(){
-    cout<<"\nIn Animate!\n";
-    window.create(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "G r a p h i n g   C a l c u l a t o r!");
+    window.create(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "G r a p h i n g   C a l c u l a t o r !");
     window.setFramerateLimit(FRAME_RATE);
+    system.setEquation();
 }
 
 void animate::Draw(){
@@ -33,6 +33,11 @@ void animate::processEvents(){
             switch(event.key.code){
             case sf::Keyboard::S:
                 //set equation
+                system.setEquation();
+                break;
+            case sf::Keyboard::D:
+                //set domain
+                system.setDomain();
                 break;
             case sf::Keyboard::Left:
                 //Move Graph Left
@@ -43,9 +48,11 @@ void animate::processEvents(){
                 system.Pan('r');
                 break;
             case sf::Keyboard::I:
+                system.Zoom('i');
                 //zoom in
                 break;
             case sf::Keyboard::O:
+                system.Zoom('o');
                 //zoom out
                 break;
             case sf::Keyboard::H:

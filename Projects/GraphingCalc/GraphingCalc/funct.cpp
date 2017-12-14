@@ -1,15 +1,18 @@
 #include "funct.h"
 //This is the final funct
 Funct::Funct(){
+    _p=FUN;
 }
 Funct::Funct(string fun){
-_funct=setFunctType(fun);
+    _p=FUN;
+    _funct=setFunctType(fun);
 }
-functType Funct::setFunctType(string &fun){
+functType Funct::setFunctType(string fun){
     if(fun.length()>0){
         if(fun=="sin"){
             return SIN;
         }else if(fun=="x"){
+            _p=NUM;
             return X;
         }else if(fun=="cos"){
             return COS;
@@ -39,5 +42,5 @@ functType Funct::getFunct(){
     return _funct;
 }
 priority Funct::getPriority(){
-    return FUN;
+    return _p;
 }
