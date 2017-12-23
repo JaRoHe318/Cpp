@@ -1,6 +1,5 @@
 #include "translate.h"
 
-Translate::Translate()
-{
+Translate::Translate() {
 
 }
