@@ -2,5 +2,16 @@
 
 System::System(){
     cout<<"\nIn system\n";
-    Plotter plot;
+}
+
+void System::Draw(sf::RenderWindow &window){
+    g.drawGraph(window);
+}
+
+void System::Step(){
+    g.Update();
+}
+
+void System::Pan(char where){
+    g.Pan(where);
 }

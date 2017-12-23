@@ -26,11 +26,20 @@ public:
     Point(double x, double y){
         _r=5;
         _pos=sf::Vector2f(x,y);
+        _point.setPosition(_pos);
     }
+<<<<<<< HEAD
    Point(double x, double y,int r){
         _r=r;
         _pos=sf::Vector2f(x,y);
     }
+=======
+    Point(double x, double y,int r){
+        _r=r;
+        _pos=sf::Vector2f(x,y);
+    }
+
+>>>>>>> bd13df3c52a4c9124c8eaf6c37838bb2631f3b02
     void setPos(double x,double y){
         _point.setPosition(sf::Vector2f(x,y));
     }
@@ -41,7 +50,10 @@ public:
     void Draw(sf::RenderWindow& window){
         window.draw(_point);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> bd13df3c52a4c9124c8eaf6c37838bb2631f3b02
 
 private:
 //    double _x;
@@ -51,4 +63,10 @@ private:
     sf::CircleShape _point;
 };
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> bd13df3c52a4c9124c8eaf6c37838bb2631f3b02
 #endif // POINT_H

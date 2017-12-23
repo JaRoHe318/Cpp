@@ -3,42 +3,62 @@
 SortingYard::SortingYard(){
 
 }
-SortingYard::SortingYard(JQueue<JToken *> &fixMe){
-    Process(fixMe);
-}
-
-void SortingYard::Process(JQueue<JToken *> &fixMe){
+SortingYard::SortingYard(JQueue<JToken*> &fixMe){
+    startParen=false;
     cout<<"\nlol in SY Process\n";
-
     JStack<JToken*> OPStack;
+    JToken* temp;
 
-    switch(fixMe.Front()->TypeOf()){
-    case DOUBLE:
-        postFix.Push(fixMe.Pop());
-        break;
-    case INTEGER:
-        postFix.Push(fixMe.Pop());
-        break;
-    case OPERATOR:
-
-
-        break;
-    case FUNCTION:
-
-        break;
+    while(!fixMe.isEmpty()){
+        switch(fixMe.Front()->TypeOf()){
+        case DOUBLE:
+        case INTEGER:
+            cout<<"\nnum";
+            postFix.Push(fixMe.Pop());
+            break;
+        case OPERATOR:
+        case FUNCTION:
+            cout<<"\nfun";
+            temp=fixMe.Pop();
+            checkPriority(temp,OPStack);
+            break;
+        default:
+            break;
+        }
     }
-
+    if(!OPStack.isEmpty()){
+        temp=OPStack.Pop();
+        postFix.Push(temp);
+    }
 
 }
 
-void SortingYard::checkOP(JStack<JToken*> &ops,JQueue<JToken*> &fixMe){
-    if(ops.isEmpty()){
-        ops.Push(fixMe.Pop());
+void SortingYard::checkPriority(JToken* &check, JStack<JToken*> &OPStack){
+
+    if(check->getPriority()==PAREN){
+        if(static_cast<Op*>(check)->getOp()==SP){
+            startParen=true;
+            OPStack.Push(check);
+        }else if(startParen&&static_cast<Op*>(check)->getOp()==EP){
+            while(OPStack.Top()->getPriority()!=PAREN){
+                postFix.Push(OPStack.Pop());
+            }
+        }else if(!startParen){
+            cout<<"\nMissingParen\n";//should never be called
+        }
     }else{
-//        switch(static_cast<Op*>(fixMe)->)
+        if(OPStack.isEmpty()){
+            OPStack.Push(check);
+        }else if(OPStack.Top()->getPriority()>=check->getPriority()){
+            postFix.Push(OPStack.Pop());
+            OPStack.Push(check);
+
+        }else if(OPStack.Top()->getPriority()<check->getPriority()){
+            OPStack.Push(check);
+        }
     }
 }
 
-void SortingYard::checkFun(JStack<JToken*> &fun, JQueue<JToken*> &fixMe){
-
+JQueue<JToken*> SortingYard::getFixed(){
+    return postFix;
 }

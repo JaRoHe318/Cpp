@@ -8,25 +8,12 @@ animate::animate(){
 }
 
 void animate::Draw(){
-//        system.Draw(window);
-
-    //This is the current origin
-    sf::RectangleShape yaxis(sf::Vector2f(LINE_WIDTH,SCREEN_HEIGHT));
-    yaxis.setPosition(sf::Vector2f(500-(LINE_WIDTH/2),0));
-    yaxis.setFillColor(sf::Color(100,100,100));
-//    yaxis.setFillColor(sf::Color::Red);
-    window.draw(yaxis);
-
-    sf::RectangleShape xaxis(sf::Vector2f(SCREEN_WIDTH,LINE_WIDTH));
-    xaxis.setPosition(sf::Vector2f(0,300-(LINE_WIDTH/2)));
-    xaxis.setFillColor(sf::Color(100,100,100));
-//    xaxis.setFillColor(sf::Color::Red);
-    window.draw(xaxis);
+    system.Draw(window);
 
 }
 
 void animate::update(){
-    //    system.Step();
+    system.Step();
 }
 
 void animate::render(){
@@ -38,7 +25,7 @@ void animate::render(){
 void animate::processEvents(){
     sf::Event event;
 
-//    float mouseX, mouseY;
+    //    float mouseX, mouseY;
 
     while (window.pollEvent(event)){
 
@@ -50,17 +37,25 @@ void animate::processEvents(){
         case sf::Event::KeyPressed:
 
             switch(event.key.code){
+            case sf::Keyboard::S:
+                //set equation
+
+                break;
             case sf::Keyboard::Left:
                 //Move Graph Left
+                system.Pan('l');
                 break;
             case sf::Keyboard::Right:
                 //Move Graph Right
+                cout<<"\nRight!";
+                system.Pan('r');
                 break;
             case sf::Keyboard::I:
                 //zoom in
                 break;
             case sf::Keyboard::O:
                 //zoom out
+
                 break;
             case sf::Keyboard::H:
                 //Set Home?
@@ -79,7 +74,7 @@ void animate::processEvents(){
             //            mouseY = event.mouseMove.y;
             break;
         case sf::Event::MouseButtonReleased:
-              break;
+            break;
 
         default:
             break;

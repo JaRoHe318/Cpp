@@ -4,17 +4,17 @@ RPN::RPN(){
 
 }
 
-RPN::RPN(double x, JQueue<JToken *> &postFix){
+RPN::RPN(double x, JQueue<JToken *> postFix){
     _x=x;
+
     Process(postFix);
 }
 
-RPN::RPN(JQueue<JToken*> &postFix){
+RPN::RPN(JQueue<JToken *> postFix){
     Process(postFix);
 }//con
 
 JToken* RPN::calculateOP(JToken* num1, JToken* num2, JToken* operate){
-    //    JToken* hold;
     double answer=0;
     double a=0;
     double b=0;
@@ -96,21 +96,12 @@ JToken* RPN::calculateFun(JToken *num, JToken *funct){
     case UNARY:
         ans=-a;
         break;
-
-    case FACTORIAL:
-        break;
-    case CSC:
-        break;
-    case SEC:
-        break;
-    case COT:
-        break;
     }
 
     return new Double(ans);
 }
 
-void RPN::Process(JQueue<JToken *> &postFix){
+void RPN::Process(JQueue<JToken*> &postFix){
     JStack<JToken*> nums;
     JToken* num1;
     JToken* num2;
@@ -131,9 +122,14 @@ void RPN::Process(JQueue<JToken *> &postFix){
             nums.Push(calculateOP(num1,num2,operation));
             break;
         case FUNCTION:
-            operation=postFix.Pop();
-            num1=nums.Pop();
-            nums.Push(calculateFun(num1,operation));
+            if(static_cast<Funct*>(postFix.Front())->getFunct()==X){
+                postFix.Pop();
+                nums.Push(new Double(_x));
+            }else{
+                operation=postFix.Pop();
+                num1=nums.Pop();
+                nums.Push(calculateFun(num1,operation));
+            }
             break;
 
         }
@@ -144,7 +140,10 @@ void RPN::Process(JQueue<JToken *> &postFix){
 
 }
 
-
+void RPN::getY(double x, JQueue<JToken*> postFix){
+    _x=x;
+    Process(postFix);
+}
 
 double RPN::getAnswer(){
     return _answer;

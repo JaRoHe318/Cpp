@@ -10,6 +10,7 @@ public:
     Double(string value);
     virtual void Print(ostream& outs) const;
     int TypeOf();
+//    priority getPriority();
     double getDouble();
 private:
     double _d;

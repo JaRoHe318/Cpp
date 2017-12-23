@@ -15,9 +15,9 @@
 class RPN{
 public:
     RPN();
-    RPN(JQueue<JToken*> &postFix);
-    RPN(double x, JQueue<JToken*> &postFix);
-
+    RPN(JQueue<JToken*> postFix);
+    RPN(double x, JQueue<JToken*> postFix);
+    void getY(double x, JQueue<JToken*> postFix);
     double getAnswer();
 private:
     double _answer;

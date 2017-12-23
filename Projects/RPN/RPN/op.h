@@ -10,9 +10,11 @@ public:
     void Print(ostream &outs)const;
     int TypeOf();
     OPType getOp();
+//    priority getPriority();
 private:
-OPType _op;
-OPType setOPType(string &op);
+    OPType _op;
+    priority opPriority;
+    OPType setOPType(string &op);
 };
 
 #endif // OP_H

@@ -9,8 +9,7 @@ SOURCES += main.cpp \
     op.cpp \
     rpn.cpp \
     double.cpp \
-    funct.cpp \
-    sortingyard.cpp
+    funct.cpp
 
 HEADERS += \
     jstack.h \

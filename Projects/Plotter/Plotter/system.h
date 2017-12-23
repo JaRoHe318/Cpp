@@ -9,8 +9,9 @@ public:
     System();
     void Draw(sf::RenderWindow& window);
     void Step();
+    void Pan(char where);
 private:
-    Graph g1;
+    Graph g;
     bool rePlot;
 };
 
